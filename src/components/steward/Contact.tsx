@@ -1,5 +1,6 @@
 import { useState } from "react";
 import conversation from "@/assets/conversation.jpg";
+import { Reveal } from "./Reveal";
 
 export const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -11,9 +12,9 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-primary-dark relative overflow-hidden text-cream">
+    <section id="contact" className="bg-primary-dark section-seam relative overflow-hidden text-cream">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="relative min-h-[28rem] lg:min-h-[44rem]">
+        <Reveal variant="left" className="relative min-h-[28rem] lg:min-h-[44rem]">
           <img
             src={conversation}
             alt="Two people in honest conversation at a wooden table with podcast microphones"
@@ -24,11 +25,11 @@ export const Contact = () => {
           <div className="absolute bottom-8 left-8 right-8">
             <span className="label text-accent">Chapter 07 — Pull up a chair</span>
           </div>
-        </div>
+        </Reveal>
 
         <div className="leather-bg relative py-20 md:py-28 px-6 md:px-16 lg:px-20">
           <div className="absolute inset-0 grain" />
-          <div className="relative max-w-xl">
+          <Reveal variant="right" delay={120} className="relative max-w-xl">
             <h2 className="display text-4xl sm:text-6xl md:text-7xl text-cream leading-[1]">
               Know somebody with a story{" "}
               <span className="text-accent italic font-body normal-case tracking-normal">worth preserving?</span>
@@ -95,7 +96,7 @@ export const Contact = () => {
                 </p>
               </form>
             )}
-          </div>
+          </Reveal>
         </div>
       </div>
 

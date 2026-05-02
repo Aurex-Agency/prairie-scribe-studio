@@ -1,4 +1,5 @@
 import { Play, Youtube } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const recent = [
   { n: "01", title: "The Why Behind The Work", desc: "A conversation about responsibility, discipline, and learning the hard way.", len: "58 min" },
@@ -15,25 +16,25 @@ const platforms = [
 
 export const Episodes = () => {
   return (
-    <section id="episodes" className="paper-bg relative py-24 md:py-32 overflow-hidden text-cream">
+    <section id="episodes" className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
       <div className="container">
         <div className="max-w-3xl mb-14">
-          <div className="flex items-center gap-3 mb-6">
+          <Reveal variant="rise" className="flex items-center gap-3 mb-6">
             <span className="w-10 h-px bg-clay-red" />
             <span className="label text-clay-red">Chapter 04 — Listen in</span>
-          </div>
-          <h2 className="display text-5xl md:text-7xl text-cream leading-[0.95]">
+          </Reveal>
+          <Reveal variant="rise" delay={120} as="h2" className="display text-5xl md:text-7xl text-cream leading-[0.95]">
             Latest episodes from <span className="text-clay-red">The Steward.</span>
-          </h2>
-          <p className="mt-7 text-lg leading-relaxed text-cream/75 max-w-2xl">
+          </Reveal>
+          <Reveal variant="fade" delay={240} as="p" className="mt-7 text-lg leading-relaxed text-cream/75 max-w-2xl">
             Start with a conversation that gets past the surface. These are stories about work, discipline, faith,
             pressure, family, animals, land, and the responsibility that comes with the life.
-          </p>
+          </Reveal>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Featured */}
-          <div className="lg:col-span-8">
+          <Reveal variant="left" className="lg:col-span-8">
             <div className="relative aspect-video bg-dark overflow-hidden shadow-leather group ring-1 ring-cream/10">
               <div className="absolute inset-0 grain" />
               <div className="absolute inset-0 flex items-center justify-center flex-col gap-5">
@@ -58,14 +59,14 @@ export const Episodes = () => {
                 <Youtube size={18} /> Watch on YouTube
               </a>
             </div>
-          </div>
+          </Reveal>
 
           {/* Recent list */}
-          <aside className="lg:col-span-4">
+          <Reveal as="aside" variant="right" delay={150} className="lg:col-span-4">
             <span className="label text-cream/50">Recent</span>
             <ul className="mt-5 divide-y divide-cream/10">
-              {recent.map((e) => (
-                <li key={e.n}>
+              {recent.map((e, i) => (
+                <Reveal as="li" key={e.n} variant="fade" delay={150 + i * 100}>
                   <a href="#" className="block py-5 group">
                     <div className="flex items-baseline gap-4">
                       <span className="font-condensed text-clay-red text-sm">EP {e.n}</span>
@@ -76,26 +77,25 @@ export const Episodes = () => {
                     </h4>
                     <p className="text-sm text-cream/65 mt-2 leading-relaxed">{e.desc}</p>
                   </a>
-                </li>
+                </Reveal>
               ))}
             </ul>
 
             <div className="mt-10 pt-8 border-t border-cream/10">
               <span className="label text-cream/50">Find it on</span>
               <div className="mt-4 grid grid-cols-2 gap-3">
-                {platforms.map((p) => (
-                  <a
-                    key={p.name}
-                    href={p.url}
+                {platforms.map((p, i) => (
+                  <Reveal as="a" key={p.name} variant="fade" delay={i * 80}
+                    {...({ href: p.url } as object)}
                     className="flex items-center justify-between border border-cream/15 text-cream/85 hover:border-clay-red hover:text-clay-red transition-colors px-4 py-3 font-condensed uppercase tracking-[0.18em] text-xs"
                   >
                     {p.name}
                     <span aria-hidden>→</span>
-                  </a>
+                  </Reveal>
                 ))}
               </div>
             </div>
-          </aside>
+          </Reveal>
         </div>
       </div>
     </section>

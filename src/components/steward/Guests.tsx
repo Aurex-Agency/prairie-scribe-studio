@@ -4,6 +4,7 @@ import horseman from "@/assets/guest-horseman.jpg";
 import rodeo from "@/assets/guest-rodeo.jpg";
 import stock from "@/assets/guest-stock.jpg";
 import ag from "@/assets/guest-ag.jpg";
+import { Reveal } from "./Reveal";
 
 const guests = [
   { title: "Ranchers", copy: "Land, livestock, patience, pressure, and the daily choices nobody sees.", img: rancher },
@@ -16,25 +17,25 @@ const guests = [
 
 export const Guests = () => {
   return (
-    <section id="guests" className="bg-dark relative py-24 md:py-32 overflow-hidden text-cream">
+    <section id="guests" className="bg-dark section-seam relative py-20 md:py-32 overflow-hidden text-cream">
       <div className="absolute inset-0 grain pointer-events-none" />
       <div className="container relative">
         <div className="max-w-3xl mb-14">
-          <div className="flex items-center gap-3 mb-6">
+          <Reveal variant="rise" className="flex items-center gap-3 mb-6">
             <span className="w-10 h-px bg-clay-red" />
             <span className="label text-clay-red">Chapter 02 — Who sits at the table</span>
-          </div>
-          <h2 className="display text-5xl md:text-7xl text-cream leading-[0.95]">
+          </Reveal>
+          <Reveal variant="rise" delay={120} as="h2" className="display text-5xl md:text-7xl text-cream leading-[0.95]">
             Conversations with people who have <span className="text-clay-red">dirt on their boots.</span>
-          </h2>
-          <p className="mt-7 text-lg leading-relaxed text-cream/75 max-w-2xl">
+          </Reveal>
+          <Reveal variant="fade" delay={240} as="p" className="mt-7 text-lg leading-relaxed text-cream/75 max-w-2xl">
             Every episode brings in someone shaped by the western and agricultural way of life — not to perform
             expertise, but to pass down what experience taught them.
-          </p>
+          </Reveal>
         </div>
       </div>
 
-      <div className="marquee-mask overflow-hidden">
+      <Reveal variant="fade" className="marquee-mask overflow-hidden">
         <div className="marquee-track flex gap-6 w-max">
           {guests.map((g) => (
             <GuestCard key={`a-${g.title}`} g={g} />
@@ -43,10 +44,12 @@ export const Guests = () => {
             <GuestCard key={`b-${g.title}`} g={g} ariaHidden />
           ))}
         </div>
-      </div>
+      </Reveal>
 
       <div className="container mt-16 flex justify-center">
-        <a href="#episodes" className="btn-brass">Start With an Episode</a>
+        <Reveal variant="rise" delay={120}>
+          <a href="#episodes" className="btn-brass">Start With an Episode</a>
+        </Reveal>
       </div>
     </section>
   );
