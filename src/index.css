@@ -130,9 +130,10 @@
   .btn-ghost-light:hover { border-color: hsl(var(--accent)); gap: 1.25rem; }
 
   .field-note {
-    background-image: var(--grain), linear-gradient(180deg, hsl(40 60% 92%), hsl(40 50% 86%));
-    background-color: hsl(var(--light));
-    box-shadow: var(--shadow-card), inset 0 0 0 1px hsl(30 25% 75%);
+    background-image: var(--grain), linear-gradient(180deg, hsl(4 11% 18%), hsl(4 11% 12%));
+    background-color: hsl(4 11% 16%);
+    color: hsl(var(--cream));
+    box-shadow: var(--shadow-card), inset 0 0 0 1px hsl(4 11% 28%);
     clip-path: polygon(0 1.5%, 98% 0, 100% 99%, 2% 100%);
   }
 
