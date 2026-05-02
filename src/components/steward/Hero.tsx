@@ -1,4 +1,5 @@
 import heroImg from "@/assets/hero-ranch.jpg";
+import logoLight from "@/assets/steward-logo-light.png";
 
 export const Hero = () => {
   return (
@@ -33,7 +34,11 @@ export const Hero = () => {
       {/* Content lower-left */}
       <div className="container relative h-full">
         <div className="absolute bottom-16 md:bottom-24 left-0 right-0 max-w-[64rem] pr-6 md:pr-12">
-          <p className="label text-accent mb-5 anim-fade">The Steward Podcast</p>
+          <img
+            src={logoLight}
+            alt="The Steward Podcast"
+            className="h-16 md:h-24 w-auto object-contain mb-6 anim-fade drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]"
+          />
           <h1
             className="display text-[3.4rem] sm:text-7xl md:text-[7.5rem] lg:text-[9rem] text-cream anim-rise"
             style={{ animationDelay: "0.05s" }}
