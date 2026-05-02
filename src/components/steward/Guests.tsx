@@ -1,9 +1,9 @@
-import rancher from "@/assets/guest-rancher.jpg";
-import farmer from "@/assets/guest-farmer.jpg";
-import horseman from "@/assets/guest-horseman.jpg";
-import rodeo from "@/assets/guest-rodeo.jpg";
-import stock from "@/assets/guest-stock.jpg";
-import ag from "@/assets/guest-ag.jpg";
+import rancher from "@/assets/guest-rancher.webp";
+import farmer from "@/assets/guest-farmer.webp";
+import horseman from "@/assets/guest-horseman.webp";
+import rodeo from "@/assets/guest-rodeo.webp";
+import stock from "@/assets/guest-stock.webp";
+import ag from "@/assets/guest-ag.webp";
 import { Reveal } from "./Reveal";
 
 const guests = [

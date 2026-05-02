@@ -1,5 +1,5 @@
-import heroImg from "@/assets/hero-cowboy-shadow.jpg";
-import logoLight from "@/assets/steward-logo-light.png";
+import heroImg from "@/assets/hero-cowboy-shadow.webp";
+import logoLight from "@/assets/steward-logo-light.webp";
 
 export const Hero = () => {
   return (
@@ -11,8 +11,10 @@ export const Hero = () => {
           alt="Shadow of a cowboy on horseback cast across cracked desert ground"
           className="w-full h-full object-cover slow-zoom"
           style={{ objectPosition: "70% 15%" }}
-          width={1536}
-          height={2048}
+          width={1400}
+          height={1867}
+          fetchPriority="high"
+          decoding="async"
         />
         {/* Darken for legibility against the bright sand */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/80" />
