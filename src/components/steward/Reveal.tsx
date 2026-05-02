@@ -60,6 +60,7 @@ export const Reveal = ({
       ref={ref as never}
       className={`reveal reveal-${variant}${visible ? " is-visible" : ""} ${className}`}
       style={{ ...style, ["--reveal-delay" as never]: `${delay}ms` }}
+      {...rest}
     >
       {children}
     </Tag>
