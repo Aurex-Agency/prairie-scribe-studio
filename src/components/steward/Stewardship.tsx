@@ -4,7 +4,7 @@ export const Stewardship = () => {
   const lines = [
     "The why behind the work",
     "The mindset it takes to last",
-    "The lessons learned from land and livestock",
+    "The lessons learned ",
     "The responsibility carried by the people who live it",
   ];
 
