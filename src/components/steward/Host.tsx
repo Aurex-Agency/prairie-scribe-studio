@@ -3,8 +3,7 @@ import { Reveal } from "./Reveal";
 
 export const Host = () => {
   return (
-    <section id="host" className="bg-dark section-seam relative py-20 md:py-32 overflow-hidden text-cream">
-      <div className="absolute inset-0 grain pointer-events-none" />
+    <section id="host" className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
       <div className="container relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
         <Reveal variant="left" className="lg:col-span-5 lg:-mt-32 relative">
           <div className="relative shadow-leather">
