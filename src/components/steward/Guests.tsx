@@ -6,12 +6,12 @@ import stock from "@/assets/guest-stock.jpg";
 import ag from "@/assets/guest-ag.jpg";
 
 const guests = [
-  { title: "Ranchers", copy: "Land, livestock, patience, pressure, and the daily choices nobody sees.", img: rancher, h: "h-[26rem]", offset: "lg:mt-0" },
-  { title: "Farmers", copy: "The discipline of seasons, soil, equipment, uncertainty, and staying with it.", img: farmer, h: "h-[32rem]", offset: "lg:mt-16" },
-  { title: "Horsemen", copy: "Feel, timing, trust, humility, and what horses teach better than people can.", img: horseman, h: "h-[28rem]", offset: "lg:mt-4" },
-  { title: "Rodeo Athletes", copy: "Preparation, pain, travel, faith, and the cost behind eight seconds.", img: rodeo, h: "h-[34rem]", offset: "lg:mt-20" },
-  { title: "Stock Contractors", copy: "Breeding, hauling, caring, judging, and respecting the animal side of the arena.", img: stock, h: "h-[28rem]", offset: "lg:mt-2" },
-  { title: "Ag Professionals", copy: "The modern pressure, business decisions, and knowledge that keep rural life moving.", img: ag, h: "h-[32rem]", offset: "lg:mt-14" },
+  { title: "Ranchers", copy: "Land, livestock, patience, pressure, and the daily choices nobody sees.", img: rancher },
+  { title: "Farmers", copy: "The discipline of seasons, soil, equipment, uncertainty, and staying with it.", img: farmer },
+  { title: "Horsemen", copy: "Feel, timing, trust, humility, and what horses teach better than people can.", img: horseman },
+  { title: "Rodeo Athletes", copy: "Preparation, pain, travel, faith, and the cost behind eight seconds.", img: rodeo },
+  { title: "Stock Contractors", copy: "Breeding, hauling, caring, judging, and respecting the animal side of the arena.", img: stock },
+  { title: "Ag Professionals", copy: "The modern pressure, business decisions, and knowledge that keep rural life moving.", img: ag },
 ];
 
 export const Guests = () => {
@@ -33,19 +33,13 @@ export const Guests = () => {
         </div>
       </div>
 
-      {/* Horizontal scroll on mobile, staggered grid on desktop */}
-      <div className="lg:hidden overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory">
-        <div className="flex gap-5 w-max">
+      <div className="marquee-mask overflow-hidden">
+        <div className="marquee-track flex gap-6 w-max">
           {guests.map((g) => (
-            <GuestCard key={g.title} g={g} className="w-[78vw] max-w-[20rem] snap-start" />
+            <GuestCard key={`a-${g.title}`} g={g} />
           ))}
-        </div>
-      </div>
-
-      <div className="hidden lg:block container">
-        <div className="grid grid-cols-3 gap-8">
           {guests.map((g) => (
-            <GuestCard key={g.title} g={g} className={g.offset} />
+            <GuestCard key={`b-${g.title}`} g={g} ariaHidden />
           ))}
         </div>
       </div>
@@ -57,12 +51,15 @@ export const Guests = () => {
   );
 };
 
-const GuestCard = ({ g, className = "" }: { g: typeof guests[number]; className?: string }) => (
-  <article className={`group ${className}`}>
-    <div className={`relative overflow-hidden ${g.h} shadow-card`}>
+const GuestCard = ({ g, ariaHidden = false }: { g: typeof guests[number]; ariaHidden?: boolean }) => (
+  <article
+    aria-hidden={ariaHidden || undefined}
+    className="group shrink-0 w-[20rem] sm:w-[22rem] h-[28rem]"
+  >
+    <div className="relative overflow-hidden h-full shadow-card">
       <img
         src={g.img}
-        alt={`${g.title} — documentary portrait for The Steward Podcast`}
+        alt={ariaHidden ? "" : `${g.title} — documentary portrait for The Steward Podcast`}
         loading="lazy"
         className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
       />
