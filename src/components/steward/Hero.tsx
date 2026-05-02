@@ -1,4 +1,5 @@
 import heroImg from "@/assets/hero-cowboy-shadow.webp";
+import heroImgMobile from "@/assets/hero-cowboy-shadow-mobile.webp";
 import logoLight from "@/assets/steward-logo-light.webp";
 
 export const Hero = () => {
@@ -6,16 +7,19 @@ export const Hero = () => {
     <section id="top" className="relative min-h-[100svh] w-full overflow-hidden text-cream">
       {/* BG */}
       <div className="absolute inset-0">
-        <img
-          src={heroImg}
-          alt="Shadow of a cowboy on horseback cast across cracked desert ground"
-          className="w-full h-full object-cover slow-zoom"
-          style={{ objectPosition: "70% 15%" }}
-          width={1400}
-          height={1867}
-          fetchPriority="high"
-          decoding="async"
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet={heroImgMobile} />
+          <img
+            src={heroImg}
+            alt="Shadow of a cowboy on horseback cast across cracked desert ground"
+            className="w-full h-full object-cover slow-zoom"
+            style={{ objectPosition: "70% 15%" }}
+            width={1400}
+            height={1867}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
         {/* Darken for legibility against the bright sand */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
