@@ -1,4 +1,4 @@
-import { Play, Youtube } from "lucide-react";
+import { Youtube } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const recent = [
@@ -35,27 +35,30 @@ export const Episodes = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Featured */}
           <Reveal variant="left" className="lg:col-span-8">
-            <div className="relative aspect-video bg-dark overflow-hidden shadow-leather group ring-1 ring-cream/10">
-              <div className="absolute inset-0 grain" />
-              <div className="absolute inset-0 flex items-center justify-center flex-col gap-5">
-                <button
-                  aria-label="Play featured episode"
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
-                  style={{ background: "var(--gradient-brass)", boxShadow: "var(--shadow-brass)" }}
-                >
-                  <Play className="text-cream ml-1.5" size={36} fill="currentColor" />
-                </button>
-                <span className="label text-cream/70">Replace with the latest YouTube embed</span>
-              </div>
+            <div className="relative aspect-video bg-dark overflow-hidden shadow-leather ring-1 ring-cream/10">
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube-nocookie.com/embed/bz7ZNZIsDnA?rel=0"
+                title="The Steward Podcast — latest episode"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
             </div>
             <div className="mt-6 flex flex-col sm:flex-row sm:items-end justify-between gap-5">
               <div>
                 <span className="label text-clay-red">Featured Episode</span>
                 <h3 className="font-display text-3xl md:text-4xl text-cream mt-2">
-                  A Conversation Worth Sitting With
+                  Latest from The Steward
                 </h3>
               </div>
-              <a href="#" className="btn-brass shrink-0">
+              <a
+                href="https://www.youtube.com/@thestewardpodcast"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-brass shrink-0"
+              >
                 <Youtube size={18} /> Watch on YouTube
               </a>
             </div>
