@@ -29,7 +29,7 @@ export const Host = () => {
           </Reveal>
           <Reveal variant="rise" delay={120} as="h2" className="display text-4xl sm:text-6xl md:text-7xl text-cream leading-[1]">
             N'shaun Cameron is not chasing a trend. He is preserving a{" "}
-            <span className="text-clay-red italic font-body normal-case tracking-normal">way of thinking.</span>
+            <span className="text-clay-red italic font-body normal-case tracking-normal">way of life.</span>
           </Reveal>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-cream/80 max-w-2xl">
             <Reveal variant="fade" delay={240} as="p">
