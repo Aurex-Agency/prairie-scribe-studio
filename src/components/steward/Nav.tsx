@@ -36,9 +36,9 @@ export const Nav = () => {
         <div className="container flex items-center justify-between py-3 md:py-4">
           <a href="#top" className="flex items-center leading-none text-cream group">
             <img
-              src={logoLight}
+              src={pastHero ? logoDark : logoLight}
               alt="The Steward Podcast"
-              className="h-16 md:h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-16 md:h-20 w-auto object-contain transition-opacity duration-300 group-hover:scale-[1.03]"
               width={400}
               height={200}
             />
