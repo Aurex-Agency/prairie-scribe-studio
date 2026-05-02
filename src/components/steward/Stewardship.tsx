@@ -25,8 +25,7 @@ export const Stewardship = () => {
             that outlasts the person doing it.
           </Reveal>
           <Reveal variant="fade" delay={340} as="p" className="mt-5 max-w-xl text-lg leading-relaxed text-cream/80">
-            The Steward Podcast exists to honor that work and carry the wisdom forward, so what was learned in the
-            dirt does not get lost to the noise.
+            The Steward Podcast exists to faithfully share knowledge, wisdom, and testimony so it can be understood, respected, and carried forward across generations.
           </Reveal>
         </div>
 
