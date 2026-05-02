@@ -33,9 +33,9 @@ export const Host = () => {
           </Reveal>
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-cream/80 max-w-2xl">
             <Reveal variant="fade" delay={240} as="p">
-              Raised from north Mississippi with a heart for his community, N'shaun built The Steward Podcast to
+              Raised from north Mississippi with a heart for the lifestyle, N'shaun built The Steward Podcast to
               create space for deeper conversations around the agricultural and western industries. He wants to
-              understand why people do what they do, how they learned it, and what wisdom should be carried forward.
+              understand why people do what they do, how they learned it, what keeps them in it, and what wisdom should be carried forward.
             </Reveal>
             <Reveal variant="fade" delay={340} as="p">
               The podcast is built on respect. Respect for the land. Respect for livestock. Respect for the people
