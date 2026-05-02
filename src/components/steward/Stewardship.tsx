@@ -20,7 +20,7 @@ export const Stewardship = () => {
             This is <span className="text-clay-red">stewardship.</span>
           </Reveal>
           <Reveal variant="fade" delay={240} as="p" className="mt-10 max-w-xl text-lg leading-relaxed text-cream/80">
-            Stewardship is the quiet weight behind the way of life — the responsibility of caring for land,
+            Stewardship is the quiet weight behind the western and agricultural way of life-the responsibility of caring for land,
             livestock, and the people who depend on both. It is not ownership. It is not performance. It is care
             that outlasts the person doing it.
           </Reveal>
