@@ -9,7 +9,7 @@
     /* Brand palette — Crimson Maroon (#860114), Charcoal Grey (#473938), Cream White (#FFFCF9) */
     --primary: 353 99% 26%;            /* #860114 deep brand crimson */
     --primary-foreground: 30 100% 99%;
-    --primary-dark: 4 11% 14%;         /* deeper charcoal so darks read truly dark */
+    --primary-dark: 4 11% 24%;         /* lifted charcoal so maroon accents read */
 
     --secondary: 4 11% 25%;            /* #473938 charcoal */
     --secondary-foreground: 30 100% 99%;
@@ -24,29 +24,29 @@
     --clay-red: 354 100% 31%;          /* matches logo red rgb(157,0,17) */
 
     /* Semantic mapping — DARK ambiance by default */
-    --background: 4 11% 11%;
+    --background: 4 11% 22%;
     --foreground: 30 100% 99%;
 
-    --card: 4 11% 16%;
+    --card: 4 11% 26%;
     --card-foreground: 30 100% 99%;
 
-    --popover: 4 11% 16%;
+    --popover: 4 11% 26%;
     --popover-foreground: 30 100% 99%;
 
-    --muted: 4 11% 20%;
+    --muted: 4 11% 30%;
     --muted-foreground: 30 20% 75%;
 
     --destructive: 353 75% 45%;
     --destructive-foreground: 30 100% 99%;
 
-    --border: 4 11% 26%;
-    --input: 4 11% 22%;
+    --border: 4 11% 36%;
+    --input: 4 11% 32%;
     --ring: 353 75% 45%;
 
     --radius: 0.25rem;
 
     /* Gradients & shadows */
-    --gradient-hero: linear-gradient(180deg, hsl(4 11% 6% / 0.35) 0%, hsl(4 11% 6% / 0.7) 55%, hsl(4 11% 5% / 0.96) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(4 11% 6% / 0.35) 0%, hsl(4 11% 6% / 0.6) 55%, hsl(4 11% 10% / 0.85) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(4 11% 14%) 0%, hsl(4 11% 7%) 100%);
     --gradient-brass: linear-gradient(135deg, hsl(353 80% 48%), hsl(353 95% 30%));
     --shadow-leather: 0 30px 80px -20px hsl(0 0% 0% / 0.75);
@@ -102,15 +102,15 @@
     background-color: hsl(var(--primary-dark));
     background-image:
       var(--grain),
-      radial-gradient(ellipse at 20% 0%, hsl(353 80% 35% / 0.32), transparent 60%),
-      radial-gradient(ellipse at 80% 100%, hsl(4 11% 5% / 0.9), transparent 60%);
+      radial-gradient(ellipse at 20% 0%, hsl(30 25% 55% / 0.28), transparent 60%),
+      radial-gradient(ellipse at 80% 100%, hsl(4 11% 10% / 0.7), transparent 60%);
   }
 
   .paper-bg {
-    background-color: hsl(4 11% 13%);
+    background-color: hsl(30 12% 26%);
     background-image:
       var(--grain),
-      radial-gradient(ellipse at 50% 0%, hsl(4 11% 22%), transparent 70%);
+      radial-gradient(ellipse at 50% 0%, hsl(30 14% 36%), transparent 70%);
     color: hsl(var(--cream));
   }
 

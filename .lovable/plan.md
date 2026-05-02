@@ -1,39 +1,36 @@
-# Add The Steward Podcast Logo Across the Site
+## Goal
 
-The user uploaded the official wordmark logo. I've already prepped two transparent variants for crisp display on dark backgrounds:
+Keep `--clay-red` exactly at the logo color `hsl(354 100% 31%)` (rgb 157,0,17), and instead lighten the dark backgrounds so the maroon accents (chapter labels, EP numbers, links, headings highlight) become easily readable.
 
-- `src/assets/steward-logo.png` — original colors (red "STEWARD", dark brown "THE" / "PODCAST"), white background removed.
-- `src/assets/steward-logo-light.png` — red "STEWARD" preserved, the previously dark-brown "THE" / "PODCAST" recolored to cream so they read clearly on dark surfaces.
+## Approach
 
-## Where the logo will appear
+The maroon is dark, so we need lighter, warmer backgrounds behind it. We'll lift the global dark surfaces a few steps without losing the moody leather feel. White outlines on the text were considered as the alternative but would clash with the editorial typography — lightening the background is cleaner and applies everywhere automatically.
 
-### 1. Top nav — `src/components/steward/Nav.tsx`
-Replace the current text wordmark ("THE STEWARD PODCAST" + tagline) with the cream-variant logo.
-- Height: `h-10` mobile, `h-12` desktop, auto width, object-contain.
-- Subtle `drop-shadow` so it floats over the hero image when the nav is transparent at the top.
-- Tiny scale-up on hover for polish.
-- Keep the existing scroll-to-solid behavior.
+## Changes (single file: `src/index.css`)
 
-### 2. Mobile drawer header — `src/components/steward/Nav.tsx`
-Replace the "THE STEWARD" text with the same cream logo at `h-9`.
+1. **Global dark surfaces** (root tokens) — bump lightness so maroon text has contrast:
+   - `--background: 4 11% 11%` → `4 11% 22%`
+   - `--card: 4 11% 16%` → `4 11% 26%`
+   - `--popover: 4 11% 16%` → `4 11% 26%`
+   - `--muted: 4 11% 20%` → `4 11% 30%`
+   - `--border: 4 11% 26%` → `4 11% 36%`
+   - `--input: 4 11% 22%` → `4 11% 32%`
+   - `--primary-dark: 4 11% 14%` → `4 11% 24%`
 
-### 3. Hero — `src/components/steward/Hero.tsx`
-Add the logo as a refined badge above the hero headline (replaces the small "— The Steward Podcast" eyebrow on mobile, keeps eyebrow on desktop where space allows). Sized `h-16 md:h-20` to feel premium without overpowering the cinematic photo.
+2. **`.leather-bg`** (Hero, Contact) — lighter base + warmer top glow:
+   - base `hsl(var(--primary-dark))` becomes the new lighter `--primary-dark` automatically
+   - top radial: `hsl(353 80% 35% / 0.32)` → `hsl(30 25% 55% / 0.28)` (warm tan glow instead of red-on-red, so red text pops)
+   - bottom radial alpha lowered: `hsl(4 11% 5% / 0.9)` → `hsl(4 11% 10% / 0.7)`
 
-### 4. Browser tab — `index.html`
-Use a small square crop of the logo as the favicon (`/favicon.png`) and remove the existing `favicon.ico` so the new one takes over.
+3. **`.paper-bg`** (Episodes, etc.):
+   - base `hsl(4 11% 13%)` → `hsl(30 12% 26%)` (warm taupe)
+   - top radial `hsl(4 11% 22%)` → `hsl(30 14% 36%)`
 
-## Why this approach
-- Using the cream-text variant guarantees legibility on every dark surface across the site (nav, drawer, hero overlay, leather-bg sections).
-- One transparent PNG file means consistent brand presentation; no recoloring hacks per location.
-- Drop shadows on the nav handle the rare case where the logo sits over a brighter sky portion of the hero image.
+4. **Hero gradient overlay** — soften so background lift isn't crushed:
+   - `--gradient-hero` end stop `hsl(4 11% 5% / 0.96)` → `hsl(4 11% 10% / 0.85)`
 
-## Out of scope
-- No changes to footer wordmark text (it's a stylized footer brand line, not a logo slot).
-- No animation beyond the existing scroll-reveals + hover scale.
+No component files need editing — every `text-clay-red`, `border-clay-red`, etc. immediately reads better against the lighter, warmer surfaces while the maroon stays exactly the logo color.
 
-## Files to touch
-- `src/components/steward/Nav.tsx` (logo in header + drawer)
-- `src/components/steward/Hero.tsx` (logo above headline)
-- `index.html` (favicon link)
-- Delete `public/favicon.ico` if present, add `public/favicon.png`
+## Technical detail
+
+All edits are in `src/index.css` lines 10–50 and 101–115. `--clay-red` (line 24) is unchanged. Token format remains raw HSL triplets used via `hsl(var(--token))`.
