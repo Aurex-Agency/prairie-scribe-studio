@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoLight from "@/assets/steward-logo-light.png";
 
 const links = [
   { href: "#episodes", label: "Episodes" },
@@ -28,11 +29,14 @@ export const Nav = () => {
         style={scrolled ? { backgroundImage: "var(--grain)" } : undefined}
       >
         <div className="container flex items-center justify-between py-4 md:py-5">
-          <a href="#top" className="block leading-none text-cream">
-            <div className="font-display text-2xl md:text-[26px] tracking-wide">THE STEWARD PODCAST</div>
-            <div className="label text-cream/60 mt-0.5 hidden sm:block">
-              Stories from the land, livestock, and people who live it
-            </div>
+          <a href="#top" className="flex items-center leading-none text-cream group">
+            <img
+              src={logoLight}
+              alt="The Steward Podcast"
+              className="h-10 md:h-12 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover:scale-[1.03]"
+              width={400}
+              height={200}
+            />
           </a>
 
           <nav className="hidden lg:flex items-center gap-9">
@@ -73,7 +77,7 @@ export const Nav = () => {
           }`}
         >
           <div className="flex justify-between items-center p-6 border-b border-cream/10">
-            <span className="font-display text-xl tracking-wide">THE STEWARD</span>
+            <img src={logoLight} alt="The Steward Podcast" className="h-9 w-auto object-contain" />
             <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-2">
               <X size={24} />
             </button>
