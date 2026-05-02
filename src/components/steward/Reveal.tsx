@@ -11,6 +11,7 @@ interface RevealProps {
   className?: string;
   style?: CSSProperties;
   once?: boolean;
+  [key: string]: unknown;
 }
 
 export const Reveal = ({
@@ -22,6 +23,7 @@ export const Reveal = ({
   className = "",
   style,
   once = true,
+  ...rest
 }: RevealProps) => {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
