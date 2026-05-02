@@ -2,7 +2,6 @@ const cols = [
   { title: "Watch", links: ["YouTube", "Latest Episode", "Episode Archive"] },
   { title: "Listen", links: ["Spotify", "Apple Podcasts", "Podcast RSS"] },
   { title: "Connect", links: ["Instagram", "Guest Suggestions", "Sponsorship"] },
-  { title: "Roots", links: ["North Mississippi", "Western Lifestyle", "Agricultural Stories"] },
 ];
 
 export const Footer = () => {
@@ -18,11 +17,11 @@ export const Footer = () => {
             </p>
             <div className="mt-8 flex items-center gap-3">
               <span className="w-8 h-px bg-accent" />
-              <span className="label text-accent">North Mississippi</span>
+              <span className="label text-accent">Stories worth preserving</span>
             </div>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-8">
             {cols.map((c) => (
               <div key={c.title}>
                 <h4 className="label text-accent mb-4">{c.title}</h4>

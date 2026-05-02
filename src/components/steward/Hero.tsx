@@ -19,7 +19,7 @@ export const Hero = () => {
       {/* Right rail vertical text */}
       <div className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 items-center gap-6">
         <div className="vline label text-cream/70">
-          North Mississippi&nbsp;&nbsp;/&nbsp;&nbsp;Western &amp; Agricultural Stories&nbsp;&nbsp;/&nbsp;&nbsp;Preserving What Matters
+          Western &amp; Agricultural Stories&nbsp;&nbsp;/&nbsp;&nbsp;Preserving What Matters
         </div>
         <div className="w-px h-32 bg-accent/60" />
       </div>
@@ -27,7 +27,7 @@ export const Hero = () => {
       {/* Top-left small rule */}
       <div className="absolute top-28 md:top-32 left-6 md:left-12 flex items-center gap-3">
         <span className="w-10 h-px bg-accent" />
-        <span className="label text-accent">Est. North Mississippi</span>
+        <span className="label text-accent">The Steward Podcast</span>
       </div>
 
       {/* Content lower-left */}
