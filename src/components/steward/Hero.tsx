@@ -1,5 +1,5 @@
-import heroImg from "@/assets/hero-cowboy-shadow.jpg";
-import logoLight from "@/assets/steward-logo-light.png";
+import heroImg from "@/assets/hero-cowboy-shadow.webp";
+import logoLight from "@/assets/steward-logo-light.webp";
 
 export const Hero = () => {
   return (

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoLight from "@/assets/steward-logo-light.png";
-import logoDark from "@/assets/steward-logo.png";
+import logoLight from "@/assets/steward-logo-light.webp";
+import logoDark from "@/assets/steward-logo.webp";
 
 const links = [
   { href: "#episodes", label: "Episodes" },

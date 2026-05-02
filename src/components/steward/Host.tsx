@@ -1,4 +1,4 @@
-import portrait from "@/assets/host-portrait.jpg";
+import portrait from "@/assets/host-portrait.webp";
 import { Reveal } from "./Reveal";
 
 export const Host = () => {
