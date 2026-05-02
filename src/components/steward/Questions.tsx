@@ -21,8 +21,7 @@ const Wave = () => (
 
 export const Questions = () => {
   return (
-    <section className="bg-dark section-seam relative py-20 md:py-32 overflow-hidden text-cream">
-      <div className="absolute inset-0 grain pointer-events-none" />
+    <section className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
       <div className="container relative max-w-6xl">
         <Reveal variant="rise" className="flex items-center gap-3 mb-8">
           <span className="w-10 h-px bg-clay-red" />
