@@ -8,7 +8,7 @@ const recent = [
 ];
 
 const platforms = [
-  { name: "YouTube", url: "#" },
+  { name: "YouTube", url: "https://www.youtube.com/@thestewardpodcast" },
   { name: "Spotify", url: "#" },
   { name: "Apple Podcasts", url: "#" },
   { name: "Instagram", url: "#" },
