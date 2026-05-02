@@ -34,11 +34,19 @@ export const Nav = () => {
         style={scrolled ? { backgroundImage: "var(--grain)" } : undefined}
       >
         <div className="container flex items-center justify-between py-3 md:py-4">
-          <a href="#top" className="flex items-center leading-none text-cream group">
+          <a href="#top" className="relative flex items-center leading-none text-cream group h-16 md:h-20">
             <img
-              src={pastHero ? logoDark : logoLight}
+              src={logoLight}
               alt="The Steward Podcast"
-              className="h-16 md:h-20 w-auto object-contain transition-opacity duration-300 group-hover:scale-[1.03]"
+              className={`h-16 md:h-20 w-auto object-contain transition-opacity duration-500 ease-out group-hover:scale-[1.03] ${pastHero ? "opacity-0" : "opacity-100"}`}
+              width={400}
+              height={200}
+            />
+            <img
+              src={logoDark}
+              alt=""
+              aria-hidden="true"
+              className={`absolute inset-0 h-16 md:h-20 w-auto object-contain transition-opacity duration-500 ease-out group-hover:scale-[1.03] ${pastHero ? "opacity-100" : "opacity-0"}`}
               width={400}
               height={200}
             />
