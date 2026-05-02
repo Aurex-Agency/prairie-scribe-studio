@@ -1,5 +1,4 @@
 import { useState } from "react";
-import conversation from "@/assets/conversation.jpg";
 import { Reveal } from "./Reveal";
 
 export const Contact = () => {
