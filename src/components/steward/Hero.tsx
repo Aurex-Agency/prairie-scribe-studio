@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-ranch.jpg";
+import heroImg from "@/assets/hero-cowboy-shadow.jpg";
 import logoLight from "@/assets/steward-logo-light.png";
 
 export const Hero = () => {
@@ -8,14 +8,17 @@ export const Hero = () => {
       <div className="absolute inset-0">
         <img
           src={heroImg}
-          alt="Sunrise on a working ranch in north Mississippi with cattle and a horse trailer"
-          className="w-full h-full object-cover slow-zoom"
-          width={1920}
-          height={1280}
+          alt="Shadow of a cowboy on horseback cast across cracked desert ground"
+          className="w-full h-full object-cover object-center slow-zoom"
+          width={1536}
+          height={2048}
         />
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+        {/* Darken for legibility against the bright sand */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
         <div className="absolute inset-0 grain" />
       </div>
+
 
       {/* Right rail vertical text */}
       <div className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 items-center gap-6">
