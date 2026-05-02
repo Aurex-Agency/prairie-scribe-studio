@@ -34,8 +34,8 @@ export const Guests = () => {
         </div>
       </div>
 
-      <Reveal variant="fade" className="marquee-mask overflow-hidden">
-        <div className="marquee-track flex gap-6 w-max">
+      <Reveal variant="fade" className="marquee-mask overflow-hidden py-2">
+        <div className="marquee-track flex gap-7 w-max px-2">
           {guests.map((g) => (
             <GuestCard key={`a-${g.title}`} g={g} />
           ))}
@@ -57,23 +57,34 @@ export const Guests = () => {
 const GuestCard = ({ g, ariaHidden = false }: { g: typeof guests[number]; ariaHidden?: boolean }) => (
   <article
     aria-hidden={ariaHidden || undefined}
-    className="group shrink-0 w-[20rem] sm:w-[22rem] h-[28rem]"
+    className="group shrink-0 w-[19rem] sm:w-[21rem]"
   >
-    <div className="relative overflow-hidden h-full shadow-card">
-      <img
-        src={g.img}
-        alt={ariaHidden ? "" : `${g.title} — documentary portrait for The Steward Podcast`}
-        loading="lazy"
-        className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-dark/85 via-dark/10 to-transparent" />
-      <div className="absolute top-4 left-4">
-        <span className="label text-accent bg-dark/40 backdrop-blur-sm px-2 py-1">Conversation</span>
+    <div className="relative overflow-hidden bg-white shadow-leather ring-1 ring-black/5 transition-transform duration-500 ease-out group-hover:-translate-y-1">
+      <div className="relative h-72 sm:h-80 overflow-hidden">
+        <img
+          src={g.img}
+          alt={ariaHidden ? "" : `${g.title} — documentary portrait for The Steward Podcast`}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+        <div className="absolute top-4 left-4">
+          <span
+            className="font-condensed font-semibold uppercase tracking-[0.22em] text-[0.65rem] px-2.5 py-1 bg-white/90 backdrop-blur-sm"
+            style={{ color: "hsl(var(--clay-red))" }}
+          >
+            Conversation
+          </span>
+        </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-6">
-        <h3 className="font-display text-3xl md:text-4xl text-cream tracking-wide">{g.title}</h3>
-        <div className="w-10 h-px bg-accent my-3" />
-        <p className="font-body text-sm text-cream/85 leading-relaxed">{g.copy}</p>
+      <div className="p-6 bg-white">
+        <h3 className="font-display text-2xl md:text-3xl tracking-wide" style={{ color: "hsl(4 11% 12%)" }}>
+          {g.title}
+        </h3>
+        <div className="w-10 h-px bg-clay-red my-3" />
+        <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(4 11% 30%)" }}>
+          {g.copy}
+        </p>
       </div>
     </div>
   </article>
