@@ -38,7 +38,7 @@ export const Hero = () => {
       {/* Top-left small rule */}
       <div className="absolute top-28 md:top-32 left-6 md:left-12 flex items-center gap-3">
         <span className="w-10 h-px bg-accent" />
-        <span className="label text-accent">The Steward Podcast</span>
+        <span className="label text-white">The Steward Podcast</span>
       </div>
 
       {/* Content lower-left */}
