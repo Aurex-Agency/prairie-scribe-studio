@@ -45,9 +45,6 @@ export const Stewardship = () => {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 italic font-body text-sm text-cream/50">
-              — recorded from north Mississippi
-            </div>
           </div>
         </div>
       </div>
