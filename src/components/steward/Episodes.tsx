@@ -71,7 +71,7 @@ export const Episodes = () => {
             <ul className="mt-5 divide-y divide-cream/10">
               {recent.map((e, i) => (
                 <Reveal as="li" key={e.n} variant="fade" delay={150 + i * 100}>
-                  <a href="#" className="block py-5 group">
+                  <a href={e.url} target="_blank" rel="noopener noreferrer" className="block py-5 group">
                     <div className="flex items-baseline gap-4">
                       <span className="font-condensed text-clay-red text-sm">EP {e.n}</span>
                       <span className="label text-cream/50 ml-auto">{e.len}</span>
