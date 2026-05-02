@@ -6,52 +6,52 @@
 
 @layer base {
   :root {
-    /* Brand palette — Crimson Maroon, Charcoal Grey, Cream White */
-    --primary: 353 99% 26%;            /* #860114 crimson maroon */
-    --primary-foreground: 30 100% 99%; /* cream white */
-    --primary-dark: 4 11% 25%;         /* #473938 charcoal grey */
+    /* Brand palette — Crimson Maroon (#860114), Charcoal Grey (#473938), Cream White (#FFFCF9) */
+    --primary: 353 99% 26%;            /* #860114 deep brand crimson */
+    --primary-foreground: 30 100% 99%;
+    --primary-dark: 4 11% 14%;         /* deeper charcoal so darks read truly dark */
 
-    --secondary: 4 11% 25%;            /* charcoal */
+    --secondary: 4 11% 25%;            /* #473938 charcoal */
     --secondary-foreground: 30 100% 99%;
 
-    --accent: 353 99% 26%;             /* crimson is the accent pop */
+    --accent: 353 75% 45%;             /* #C8112A — brighter crimson for screen legibility */
     --accent-foreground: 30 100% 99%;
 
-    --dark: 4 11% 18%;                 /* deeper charcoal */
-    --light: 30 60% 94%;               /* warm off-cream */
+    --dark: 4 11% 9%;                  /* near-black charcoal */
+    --light: 30 60% 94%;
     --cream: 30 100% 99%;              /* #FFFCF9 */
-    --sage: 4 11% 35%;                 /* muted charcoal stand-in */
-    --clay-red: 353 99% 26%;           /* crimson */
+    --sage: 4 11% 35%;
+    --clay-red: 353 75% 45%;           /* working crimson for accents */
 
-    /* Semantic mapping */
-    --background: 30 100% 99%;         /* cream white */
-    --foreground: 4 11% 18%;           /* charcoal */
+    /* Semantic mapping — DARK ambiance by default */
+    --background: 4 11% 11%;
+    --foreground: 30 100% 99%;
 
-    --card: 30 100% 99%;
-    --card-foreground: 4 11% 18%;
+    --card: 4 11% 16%;
+    --card-foreground: 30 100% 99%;
 
-    --popover: 30 100% 99%;
-    --popover-foreground: 4 11% 18%;
+    --popover: 4 11% 16%;
+    --popover-foreground: 30 100% 99%;
 
-    --muted: 30 25% 92%;
-    --muted-foreground: 4 11% 38%;
+    --muted: 4 11% 20%;
+    --muted-foreground: 30 20% 75%;
 
-    --destructive: 353 99% 26%;
+    --destructive: 353 75% 45%;
     --destructive-foreground: 30 100% 99%;
 
-    --border: 4 11% 82%;
-    --input: 4 11% 78%;
-    --ring: 353 99% 26%;
+    --border: 4 11% 26%;
+    --input: 4 11% 22%;
+    --ring: 353 75% 45%;
 
     --radius: 0.25rem;
 
     /* Gradients & shadows */
-    --gradient-hero: linear-gradient(180deg, hsl(4 11% 12% / 0.2) 0%, hsl(4 11% 10% / 0.5) 55%, hsl(4 11% 8% / 0.9) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(4 11% 25%) 0%, hsl(4 11% 14%) 100%);
-    --gradient-brass: linear-gradient(135deg, hsl(353 99% 32%), hsl(353 99% 22%));
-    --shadow-leather: 0 20px 60px -20px hsl(4 11% 10% / 0.6);
-    --shadow-brass: 0 12px 30px -10px hsl(353 99% 20% / 0.5);
-    --shadow-card: 0 8px 24px -12px hsl(4 11% 15% / 0.35);
+    --gradient-hero: linear-gradient(180deg, hsl(4 11% 6% / 0.35) 0%, hsl(4 11% 6% / 0.7) 55%, hsl(4 11% 5% / 0.96) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(4 11% 14%) 0%, hsl(4 11% 7%) 100%);
+    --gradient-brass: linear-gradient(135deg, hsl(353 80% 48%), hsl(353 95% 30%));
+    --shadow-leather: 0 30px 80px -20px hsl(0 0% 0% / 0.75);
+    --shadow-brass: 0 14px 36px -10px hsl(353 90% 25% / 0.7);
+    --shadow-card: 0 12px 32px -12px hsl(0 0% 0% / 0.65);
 
     /* Textures */
     --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
@@ -98,15 +98,16 @@
     background-color: hsl(var(--primary-dark));
     background-image:
       var(--grain),
-      radial-gradient(ellipse at 20% 0%, hsl(353 99% 26% / 0.35), transparent 60%),
-      radial-gradient(ellipse at 80% 100%, hsl(4 11% 14% / 0.7), transparent 60%);
+      radial-gradient(ellipse at 20% 0%, hsl(353 80% 35% / 0.32), transparent 60%),
+      radial-gradient(ellipse at 80% 100%, hsl(4 11% 5% / 0.9), transparent 60%);
   }
 
   .paper-bg {
-    background-color: hsl(var(--cream));
+    background-color: hsl(4 11% 13%);
     background-image:
       var(--grain),
-      radial-gradient(ellipse at 50% 0%, hsl(30 50% 95%), transparent 70%);
+      radial-gradient(ellipse at 50% 0%, hsl(4 11% 22%), transparent 70%);
+    color: hsl(var(--cream));
   }
 
   .vline { writing-mode: vertical-rl; transform: rotate(180deg); }
