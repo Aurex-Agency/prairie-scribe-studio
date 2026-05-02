@@ -118,7 +118,7 @@
   .btn-brass {
     @apply inline-flex items-center justify-center gap-2 px-7 py-4 font-condensed uppercase tracking-[0.2em] text-sm font-medium;
     background: var(--gradient-brass);
-    color: hsl(var(--accent-foreground));
+    color: hsl(0 0% 100%);
     box-shadow: var(--shadow-brass), inset 0 1px 0 hsl(40 80% 80% / 0.4);
     transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s var(--transition-smooth);
   }
