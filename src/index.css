@@ -7,21 +7,21 @@
 @layer base {
   :root {
     /* Brand palette — Crimson Maroon (#860114), Charcoal Grey (#473938), Cream White (#FFFCF9) */
-    --primary: 353 99% 26%;            /* #860114 deep brand crimson */
+    --primary: 354 100% 22%;           /* darker — closer to logo #700010 */
     --primary-foreground: 30 100% 99%;
     --primary-dark: 0 0% 100%;         /* now light surface for hero/contact */
 
     --secondary: 4 11% 25%;            /* #473938 charcoal */
     --secondary-foreground: 30 100% 99%;
 
-    --accent: 353 75% 45%;             /* #C8112A — brighter crimson for screen legibility */
+    --accent: 354 100% 26%;            /* darker crimson, logo-aligned */
     --accent-foreground: 30 100% 99%;
 
     --dark: 4 11% 9%;                  /* near-black charcoal — used for text */
     --light: 30 60% 94%;
     --cream: 4 11% 12%;                /* repurposed: dark text on light bg */
     --sage: 4 11% 35%;
-    --clay-red: 354 100% 31%;          /* matches logo red rgb(157,0,17) */
+    --clay-red: 354 100% 24%;          /* deeper than logo red, richer maroon */
 
     /* Semantic mapping — LIGHT ambiance */
     --background: 0 0% 100%;
