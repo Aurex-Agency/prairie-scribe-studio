@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import logoLight from "@/assets/steward-logo-light.webp";
-import logoDark from "@/assets/steward-logo.webp";
+const logoLight = "/steward-logo-light-small.webp";
+const logoDark = "/steward-logo-small.webp";
 
 const links = [
   { href: "#episodes", label: "Episodes" },
@@ -39,16 +38,20 @@ export const Nav = () => {
               src={logoLight}
               alt="The Steward Podcast"
               className={`h-16 md:h-20 w-auto object-contain transition-opacity duration-500 ease-out group-hover:scale-[1.03] ${pastHero ? "opacity-0" : "opacity-100"}`}
-              width={400}
-              height={200}
+              width={256}
+              height={128}
+              fetchPriority="high"
+              decoding="async"
             />
             <img
               src={logoDark}
               alt=""
               aria-hidden="true"
               className={`absolute inset-0 h-16 md:h-20 w-auto object-contain transition-opacity duration-500 ease-out group-hover:scale-[1.03] ${pastHero ? "opacity-100" : "opacity-0"}`}
-              width={400}
-              height={200}
+              width={256}
+              height={128}
+              loading="lazy"
+              decoding="async"
             />
           </a>
 
@@ -72,7 +75,11 @@ export const Nav = () => {
             onClick={() => setOpen(true)}
             className="lg:hidden text-cream p-2 flex items-center"
           >
-            <Menu size={32} />
+            <span className="block w-8 h-6 relative" aria-hidden="true">
+              <span className="absolute left-0 top-0 h-0.5 w-8 bg-current" />
+              <span className="absolute left-0 top-1/2 h-0.5 w-8 -translate-y-1/2 bg-current" />
+              <span className="absolute left-0 bottom-0 h-0.5 w-8 bg-current" />
+            </span>
           </button>
         </div>
       </header>
@@ -90,9 +97,12 @@ export const Nav = () => {
           }`}
         >
           <div className="flex justify-between items-center p-6 border-b border-cream/10">
-            <img src={logoLight} alt="The Steward Podcast" className="h-9 w-auto object-contain" />
+            <img src={logoLight} alt="The Steward Podcast" className="h-9 w-auto object-contain" width={256} height={128} loading="lazy" decoding="async" />
             <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-2">
-              <X size={24} />
+              <span className="block w-6 h-6 relative rotate-45" aria-hidden="true">
+                <span className="absolute left-0 top-1/2 h-0.5 w-6 -translate-y-1/2 bg-current" />
+                <span className="absolute left-1/2 top-0 h-6 w-0.5 -translate-x-1/2 bg-current" />
+              </span>
             </button>
           </div>
           <nav className="flex-1 flex flex-col gap-2 p-6">
