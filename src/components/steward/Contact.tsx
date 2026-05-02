@@ -87,7 +87,6 @@ export const Contact = () => {
             )}
           </Reveal>
         </div>
-      </div>
 
       <style>{`
         .input-leather {
