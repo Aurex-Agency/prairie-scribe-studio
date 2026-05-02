@@ -15,17 +15,17 @@ const platforms = [
 
 export const Episodes = () => {
   return (
-    <section id="episodes" className="paper-bg relative py-24 md:py-32 overflow-hidden">
+    <section id="episodes" className="paper-bg relative py-24 md:py-32 overflow-hidden text-cream">
       <div className="container">
         <div className="max-w-3xl mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <span className="w-10 h-px bg-secondary" />
-            <span className="label text-secondary">Chapter 04 — Listen in</span>
+            <span className="w-10 h-px bg-clay-red" />
+            <span className="label text-clay-red">Chapter 04 — Listen in</span>
           </div>
-          <h2 className="display text-5xl md:text-7xl text-primary-dark leading-[0.95]">
+          <h2 className="display text-5xl md:text-7xl text-cream leading-[0.95]">
             Latest episodes from <span className="text-clay-red">The Steward.</span>
           </h2>
-          <p className="mt-7 text-lg leading-relaxed text-foreground/75 max-w-2xl">
+          <p className="mt-7 text-lg leading-relaxed text-cream/75 max-w-2xl">
             Start with a conversation that gets past the surface. These are stories about work, discipline, faith,
             pressure, family, animals, land, and the responsibility that comes with the life.
           </p>
@@ -34,7 +34,7 @@ export const Episodes = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Featured */}
           <div className="lg:col-span-8">
-            <div className="relative aspect-video bg-primary-dark overflow-hidden shadow-leather group">
+            <div className="relative aspect-video bg-dark overflow-hidden shadow-leather group ring-1 ring-cream/10">
               <div className="absolute inset-0 grain" />
               <div className="absolute inset-0 flex items-center justify-center flex-col gap-5">
                 <button
@@ -42,7 +42,7 @@ export const Episodes = () => {
                   className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
                   style={{ background: "var(--gradient-brass)", boxShadow: "var(--shadow-brass)" }}
                 >
-                  <Play className="text-primary-dark ml-1.5" size={36} fill="currentColor" />
+                  <Play className="text-cream ml-1.5" size={36} fill="currentColor" />
                 </button>
                 <span className="label text-cream/70">Replace with the latest YouTube embed</span>
               </div>
@@ -50,7 +50,7 @@ export const Episodes = () => {
             <div className="mt-6 flex flex-col sm:flex-row sm:items-end justify-between gap-5">
               <div>
                 <span className="label text-clay-red">Featured Episode</span>
-                <h3 className="font-display text-3xl md:text-4xl text-primary-dark mt-2">
+                <h3 className="font-display text-3xl md:text-4xl text-cream mt-2">
                   A Conversation Worth Sitting With
                 </h3>
               </div>
@@ -62,32 +62,32 @@ export const Episodes = () => {
 
           {/* Recent list */}
           <aside className="lg:col-span-4">
-            <span className="label text-muted-foreground">Recent</span>
-            <ul className="mt-5 divide-y divide-foreground/10">
+            <span className="label text-cream/50">Recent</span>
+            <ul className="mt-5 divide-y divide-cream/10">
               {recent.map((e) => (
                 <li key={e.n}>
                   <a href="#" className="block py-5 group">
                     <div className="flex items-baseline gap-4">
-                      <span className="font-condensed text-secondary text-sm">EP {e.n}</span>
-                      <span className="label text-muted-foreground ml-auto">{e.len}</span>
+                      <span className="font-condensed text-clay-red text-sm">EP {e.n}</span>
+                      <span className="label text-cream/50 ml-auto">{e.len}</span>
                     </div>
-                    <h4 className="font-display text-2xl text-primary-dark mt-1.5 group-hover:text-clay-red transition-colors">
+                    <h4 className="font-display text-2xl text-cream mt-1.5 group-hover:text-clay-red transition-colors">
                       {e.title}
                     </h4>
-                    <p className="text-sm text-foreground/70 mt-2 leading-relaxed">{e.desc}</p>
+                    <p className="text-sm text-cream/65 mt-2 leading-relaxed">{e.desc}</p>
                   </a>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-10 pt-8 border-t border-foreground/10">
-              <span className="label text-muted-foreground">Find it on</span>
+            <div className="mt-10 pt-8 border-t border-cream/10">
+              <span className="label text-cream/50">Find it on</span>
               <div className="mt-4 grid grid-cols-2 gap-3">
                 {platforms.map((p) => (
                   <a
                     key={p.name}
                     href={p.url}
-                    className="flex items-center justify-between border border-foreground/15 hover:border-clay-red hover:text-clay-red transition-colors px-4 py-3 font-condensed uppercase tracking-[0.18em] text-xs"
+                    className="flex items-center justify-between border border-cream/15 text-cream/85 hover:border-clay-red hover:text-clay-red transition-colors px-4 py-3 font-condensed uppercase tracking-[0.18em] text-xs"
                   >
                     {p.name}
                     <span aria-hidden>→</span>

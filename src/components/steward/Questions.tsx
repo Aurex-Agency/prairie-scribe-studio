@@ -10,7 +10,7 @@ const Wave = () => (
     {[3, 6, 4, 8, 5, 7, 4, 9, 5, 6, 3].map((h, i) => (
       <span
         key={i}
-        className="block w-[3px] bg-clay-red/60 wave-bar"
+        className="block w-[3px] bg-clay-red wave-bar"
         style={{ height: `${h * 4}px`, animationDelay: `${i * 0.12}s` }}
       />
     ))}
@@ -19,13 +19,14 @@ const Wave = () => (
 
 export const Questions = () => {
   return (
-    <section className="bg-cream relative py-24 md:py-36 overflow-hidden">
-      <div className="container max-w-6xl">
+    <section className="bg-dark relative py-24 md:py-36 overflow-hidden text-cream">
+      <div className="absolute inset-0 grain pointer-events-none" />
+      <div className="container relative max-w-6xl">
         <div className="flex items-center gap-3 mb-8">
           <span className="w-10 h-px bg-clay-red" />
           <span className="label text-clay-red">Chapter 06 — A pause</span>
         </div>
-        <h2 className="display text-5xl md:text-7xl lg:text-8xl text-primary-dark leading-[0.95] max-w-4xl">
+        <h2 className="display text-5xl md:text-7xl lg:text-8xl text-cream leading-[0.95] max-w-4xl">
           What this podcast is really asking.
         </h2>
 
@@ -35,17 +36,17 @@ export const Questions = () => {
           {qs.map((item, i) => (
             <div key={item.q} className={`max-w-3xl ${item.off}`}>
               <span className="font-condensed text-clay-red text-sm tracking-[0.2em]">Q.0{i + 1}</span>
-              <h3 className="display text-3xl sm:text-5xl md:text-6xl text-primary-dark mt-3 leading-[1]">
+              <h3 className="display text-3xl sm:text-5xl md:text-6xl text-cream mt-3 leading-[1]">
                 {item.q}
               </h3>
-              <p className="mt-5 text-lg italic font-body text-muted-foreground max-w-xl">{item.a}</p>
+              <p className="mt-5 text-lg italic font-body text-cream/55 max-w-xl">{item.a}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-20 md:mt-28 max-w-3xl">
           <Wave />
-          <p className="mt-6 font-display text-3xl md:text-5xl text-primary-dark leading-tight">
+          <p className="mt-6 font-display text-3xl md:text-5xl text-cream leading-tight">
             The Steward Podcast is where those answers have{" "}
             <span className="text-clay-red italic font-body normal-case tracking-normal">room to breathe.</span>
           </p>

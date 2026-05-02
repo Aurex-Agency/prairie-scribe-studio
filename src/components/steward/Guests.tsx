@@ -16,17 +16,18 @@ const guests = [
 
 export const Guests = () => {
   return (
-    <section id="guests" className="bg-light relative py-24 md:py-32 overflow-hidden">
-      <div className="container">
+    <section id="guests" className="bg-dark relative py-24 md:py-32 overflow-hidden text-cream">
+      <div className="absolute inset-0 grain pointer-events-none" />
+      <div className="container relative">
         <div className="max-w-3xl mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <span className="w-10 h-px bg-secondary" />
-            <span className="label text-secondary">Chapter 02 — Who sits at the table</span>
+            <span className="w-10 h-px bg-clay-red" />
+            <span className="label text-clay-red">Chapter 02 — Who sits at the table</span>
           </div>
-          <h2 className="display text-5xl md:text-7xl text-primary-dark leading-[0.95]">
+          <h2 className="display text-5xl md:text-7xl text-cream leading-[0.95]">
             Conversations with people who have <span className="text-clay-red">dirt on their boots.</span>
           </h2>
-          <p className="mt-7 text-lg leading-relaxed text-foreground/75 max-w-2xl">
+          <p className="mt-7 text-lg leading-relaxed text-cream/75 max-w-2xl">
             Every episode brings in someone shaped by the western and agricultural way of life — not to perform
             expertise, but to pass down what experience taught them.
           </p>
