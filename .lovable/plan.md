@@ -1,39 +1,42 @@
 ## Goal
 
-Redesign the Chapter 07 contact form so it actually fits the new light theme — currently the inputs render dark-on-dark (invisible text), the section uses removed leather styling, and the layout is a plain stack of underlined fields.
+Make the Chapter 02 (Guests) marquee look polished and ensure all card text is clearly readable.
 
-## Problems with current form
+## Problems with current section
 
-- Wrapper uses `bg-primary-dark` + `leather-bg` (now both white) so the section is just blank cream.
-- `.input-leather` uses `bg-dark/50` with `color: hsl(var(--cream))` — but `--cream` is now dark charcoal. So you get dark text on dark inputs = unreadable.
-- Accents reference `text-accent` which is the bright web-red, not the maroon `clay-red` used everywhere else.
-- No card/container — fields float on the page.
-- Name and Email stack on every breakpoint, wasting space.
+- Card title + copy use `text-cream`, which we repurposed to **dark charcoal** for the light theme. Sitting on a dark image gradient at the bottom of the card, dark text disappears.
+- "Conversation" tag uses `text-accent` over `bg-dark/40` — low contrast on the now light theme.
+- Cards are pure image with overlaid text; the new site is white/cream so floating dark images with overlays feel disconnected from the page.
+- `from-dark/85` references a token that no longer reads dark consistently.
 
-## Redesign (single file: `src/components/steward/Contact.tsx`)
+## Redesign (single file: `src/components/steward/Guests.tsx`)
 
-1. **Section shell**: replace `bg-primary-dark` + inner `leather-bg` + grain overlay with the standard `paper-bg` we use for other chapters. Drop the duplicate inner `<div className="absolute inset-0 grain" />`.
+Switch from "image-with-overlay-caption" to a **two-pane editorial card**: image on top, white info panel underneath. This both restores readability and looks more premium.
 
-2. **Form container**: wrap the form in a clean white card — `bg-white shadow-card border border-border p-7 md:p-9 space-y-6` — so it reads as "a note on the table" instead of floating fields.
+### Card layout
+- Wrapper: `w-[19rem] sm:w-[21rem]` (drop fixed `h-[28rem]`), `bg-white`, `shadow-leather`, `ring-1 ring-black/5`, subtle hover lift `group-hover:-translate-y-1`.
+- **Image pane**: fixed `h-72 sm:h-80`, full-cover image with longer zoom on hover (`duration-[1400ms]`, `scale-110`).
+- Image overlay: lighter `from-black/55 via-black/10 to-transparent` (just for the tag chip contrast, not for text).
+- **Tag chip** ("Conversation"): white pill `bg-white/90 backdrop-blur-sm`, clay-red text, condensed uppercase tracking — reads on any image.
+- **Info panel** (below image, white): 
+  - Title: `font-display text-2xl md:text-3xl` in dark charcoal `hsl(4 11% 12%)`.
+  - 10px clay-red rule.
+  - Copy: `text-sm` in muted charcoal `hsl(4 11% 30%)` for proper hierarchy.
 
-3. **Layout**: put Name + Email side-by-side via `grid grid-cols-1 sm:grid-cols-2 gap-6`. Topic and Message stay full-width.
+Inline `style={{ color: ... }}` is used on the title/copy/tag so we don't fight the section-level `text-cream` (which is now dark). This guarantees correct contrast regardless of token reuse.
 
-4. **Accent swap**: `text-accent` → `text-clay-red` and `bg-accent` → `bg-clay-red` for the chapter label, the italic emphasis ("worth preserving?"), and field labels — consistent with the rest of the site.
+### Marquee polish
+- Increase gap from `gap-6` to `gap-7`.
+- Add `py-2` to the masked container and `px-2` to the track so the cards' shadows aren't clipped against the mask edge.
 
-5. **Inputs** — replace `.input-leather` with a new `.input-paper` style:
-   - Background: cream `hsl(30 30% 97%)` → on focus white
-   - Border: `1px solid hsl(30 15% 82%)` → focus ring `hsl(var(--clay-red))` with `0 0 0 3px hsl(var(--clay-red) / 0.12)` glow
-   - Text color: dark charcoal `hsl(4 11% 12%)`
-   - Placeholder: italic muted gray
-   - Padding bumped to `0.85rem 1rem`, radius 2px
-   - Hover state darkens border slightly
+### Header / CTA
+- Untouched — already light-theme correct.
 
-6. **Field labels**: smaller (`text-xs`) and clay-red, sitting above the input.
+## Result
 
-7. **Submit row**: button + the "Real stories only" italic note share one flex row on `sm+`, with the button on the right and reorder so the button comes first on mobile (`order-1 sm:order-2`).
+- Image stays the hero of the card.
+- Title and description are now dark text on a clean white panel — fully readable in any browser/lighting.
+- The white card with leather shadow looks intentional against the warm `paper-bg`.
+- Marquee retains its motion but feels less crowded.
 
-8. **Submitted state**: change card from `bg-dark/40` to `bg-white shadow-card` with `border-clay-red/40` so it remains visible.
-
-9. **Textarea**: bump rows from 4 → 5, add a useful placeholder ("Tell us about the story, the person, or the idea...").
-
-`text-cream` is kept on body copy/heading inside the section because we repurposed the token to dark — it renders correctly as charcoal on the new white card/paper background.
+No other files touched. Token system unchanged.
