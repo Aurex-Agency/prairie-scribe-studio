@@ -1,6 +1,6 @@
-import heroImg from "@/assets/hero-cowboy-shadow.webp";
-import heroImgMobile from "@/assets/hero-cowboy-shadow-mobile.webp";
-import logoLight from "@/assets/steward-logo-light.webp";
+const heroImg = "/hero-cowboy-shadow.webp";
+const heroImgMobile = "/hero-cowboy-shadow-mobile-sm.webp";
+const logoLight = "/steward-logo-light-small.webp";
 
 export const Hero = () => {
   return (
@@ -23,7 +23,7 @@ export const Hero = () => {
         {/* Darken for legibility against the bright sand */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
-        <div className="absolute inset-0 grain" />
+        <div className="absolute inset-0 hero-grain" />
       </div>
 
 
@@ -48,6 +48,10 @@ export const Hero = () => {
             src={logoLight}
             alt="The Steward Podcast"
             className="h-16 md:h-24 w-auto object-contain mb-6 anim-fade drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]"
+            width={256}
+            height={128}
+            fetchPriority="high"
+            decoding="async"
           />
           <h1
             className="display text-[3.4rem] sm:text-7xl md:text-[7.5rem] lg:text-[9rem] text-cream anim-rise"
