@@ -2,9 +2,8 @@ import { Youtube } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const recent = [
-  { n: "01", title: "The Why Behind The Work", desc: "A conversation about responsibility, discipline, and learning the hard way.", len: "58 min" },
-  { n: "02", title: "Lessons From Land And Livestock", desc: "What animals, seasons, and long days can teach a person.", len: "1h 12 min" },
-  { n: "03", title: "The Cost Behind The Lifestyle", desc: "A deeper look at sacrifice, identity, and doing work that does not always get seen.", len: "47 min" },
+  { n: "02", title: "Lessons From Land And Livestock", desc: "What animals, seasons, and long days can teach a person.", len: "1h 12 min", url: "https://youtu.be/kM0ES9TBHZw" },
+  { n: "03", title: "The Cost Behind The Lifestyle", desc: "A deeper look at sacrifice, identity, and doing work that does not always get seen.", len: "47 min", url: "https://youtu.be/Au-HbSJEPTM" },
 ];
 
 const platforms = [
@@ -72,7 +71,7 @@ export const Episodes = () => {
             <ul className="mt-5 divide-y divide-cream/10">
               {recent.map((e, i) => (
                 <Reveal as="li" key={e.n} variant="fade" delay={150 + i * 100}>
-                  <a href="#" className="block py-5 group">
+                  <a href={e.url} target="_blank" rel="noopener noreferrer" className="block py-5 group">
                     <div className="flex items-baseline gap-4">
                       <span className="font-condensed text-clay-red text-sm">EP {e.n}</span>
                       <span className="label text-cream/50 ml-auto">{e.len}</span>
