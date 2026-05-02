@@ -103,6 +103,13 @@
     mix-blend-mode: overlay;
   }
 
+  .hero-grain {
+    background-image: var(--grain);
+    opacity: 0.28;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
   .leather-bg {
     background-color: hsl(0 0% 100%);
     background-image:
@@ -205,6 +212,10 @@
 }
 .slow-zoom { animation: slowZoom 18s ease-out forwards; }
 .wave-bar  { animation: wave 1.4s ease-in-out infinite; transform-origin: center; }
+
+@media (max-width: 767px) {
+  .slow-zoom { animation: none; }
+}
 
 @keyframes marquee {
   from { transform: translateX(0); }

@@ -1,5 +1,3 @@
-import { Youtube, Instagram, Facebook, Music2 } from "lucide-react";
-
 type SocialLink = { name: string; url: string };
 
 const cols: { title: string; links: SocialLink[] }[] = [
@@ -27,11 +25,11 @@ const cols: { title: string; links: SocialLink[] }[] = [
 ];
 
 const socialIcons = [
-  { name: "YouTube", url: "https://youtube.com/@thestewardpodcast", Icon: Youtube },
-  { name: "Instagram", url: "https://www.instagram.com/thestewardpodcast", Icon: Instagram },
-  { name: "Facebook", url: "http://facebook.com/thestewardpodcast", Icon: Facebook },
-  { name: "TikTok", url: "https://www.tiktok.com/@thestewardpodcast", Icon: Music2 },
-  { name: "Spotify", url: "https://open.spotify.com/show/7p2tCM7qRNsOmjox4cNhVE", Icon: Music2 },
+  { name: "YouTube", url: "https://youtube.com/@thestewardpodcast", label: "YT" },
+  { name: "Instagram", url: "https://www.instagram.com/thestewardpodcast", label: "IG" },
+  { name: "Facebook", url: "http://facebook.com/thestewardpodcast", label: "FB" },
+  { name: "TikTok", url: "https://www.tiktok.com/@thestewardpodcast", label: "TT" },
+  { name: "Spotify", url: "https://open.spotify.com/show/7p2tCM7qRNsOmjox4cNhVE", label: "SP" },
 ];
 
 export const Footer = () => {
@@ -51,16 +49,16 @@ export const Footer = () => {
             </div>
 
             <div className="mt-8 flex items-center gap-3 flex-wrap">
-              {socialIcons.map(({ name, url, Icon }) => (
+              {socialIcons.map(({ name, url, label }) => (
                 <a
                   key={name}
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="w-10 h-10 flex items-center justify-center border border-cream/20 text-cream/80 hover:text-clay-red hover:border-clay-red transition-colors"
+                  className="w-10 h-10 flex items-center justify-center border border-cream/20 text-cream/80 hover:text-clay-red hover:border-clay-red transition-colors font-condensed text-xs font-semibold tracking-[0.14em]"
                 >
-                  <Icon size={18} />
+                  {label}
                 </a>
               ))}
             </div>

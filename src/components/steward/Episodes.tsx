@@ -1,4 +1,3 @@
-import { Youtube } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const recent = [
@@ -60,7 +59,7 @@ export const Episodes = () => {
                 rel="noopener noreferrer"
                 className="btn-brass shrink-0"
               >
-                <Youtube size={18} /> Watch on YouTube
+                <span aria-hidden>▶</span> Watch on YouTube
               </a>
             </div>
           </Reveal>
