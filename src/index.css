@@ -75,6 +75,11 @@
   section {
     scroll-margin-top: 80px;
   }
+  /* Skip rendering work for off-screen sections (mobile perf) */
+  section:not(#top) {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1200px;
+  }
   h1, h2, h3, h4 {
     @apply font-display tracking-tight;
   }
