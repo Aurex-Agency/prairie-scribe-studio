@@ -86,7 +86,7 @@ export const Episodes = () => {
               <div className="mt-4 grid grid-cols-2 gap-3">
                 {platforms.map((p, i) => (
                   <Reveal as="a" key={p.name} variant="fade" delay={i * 80}
-                    {...({ href: p.url } as object)}
+                    href={p.url}
                     className="flex items-center justify-between border border-cream/15 text-cream/85 hover:border-clay-red hover:text-clay-red transition-colors px-4 py-3 font-condensed uppercase tracking-[0.18em] text-xs"
                   >
                     {p.name}
