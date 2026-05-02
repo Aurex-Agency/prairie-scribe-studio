@@ -1,36 +1,30 @@
 ## Goal
 
-Keep `--clay-red` exactly at the logo color `hsl(354 100% 31%)` (rgb 157,0,17), and instead lighten the dark backgrounds so the maroon accents (chapter labels, EP numbers, links, headings highlight) become easily readable.
+Make Chapter 02 (Guests) and Chapter 05 (Host) sections match the new light theme — they currently use `bg-dark` so they still render as dark slabs with hard-to-read text.
 
-## Approach
+## Cause
 
-The maroon is dark, so we need lighter, warmer backgrounds behind it. We'll lift the global dark surfaces a few steps without losing the moody leather feel. White outlines on the text were considered as the alternative but would clash with the editorial typography — lightening the background is cleaner and applies everywhere automatically.
+Both sections hardcode `className="bg-dark ..."`, which maps to the still-dark `--dark` token (kept dark intentionally for image overlays). The other sections use `paper-bg` / `leather-bg` which were already converted to light surfaces, so they look correct.
 
-## Changes (single file: `src/index.css`)
+## Changes
 
-1. **Global dark surfaces** (root tokens) — bump lightness so maroon text has contrast:
-   - `--background: 4 11% 11%` → `4 11% 22%`
-   - `--card: 4 11% 16%` → `4 11% 26%`
-   - `--popover: 4 11% 16%` → `4 11% 26%`
-   - `--muted: 4 11% 20%` → `4 11% 30%`
-   - `--border: 4 11% 26%` → `4 11% 36%`
-   - `--input: 4 11% 22%` → `4 11% 32%`
-   - `--primary-dark: 4 11% 14%` → `4 11% 24%`
+**`src/components/steward/Guests.tsx`** (line 20–21)
+- Replace `bg-dark` with `paper-bg`.
+- Remove the now-unneeded `<div className="absolute inset-0 grain pointer-events-none" />` (grain reads as dark spots on white).
 
-2. **`.leather-bg`** (Hero, Contact) — lighter base + warmer top glow:
-   - base `hsl(var(--primary-dark))` becomes the new lighter `--primary-dark` automatically
-   - top radial: `hsl(353 80% 35% / 0.32)` → `hsl(30 25% 55% / 0.28)` (warm tan glow instead of red-on-red, so red text pops)
-   - bottom radial alpha lowered: `hsl(4 11% 5% / 0.9)` → `hsl(4 11% 10% / 0.7)`
+```tsx
+<section id="guests" className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
+  <div className="container relative">
+```
 
-3. **`.paper-bg`** (Episodes, etc.):
-   - base `hsl(4 11% 13%)` → `hsl(30 12% 26%)` (warm taupe)
-   - top radial `hsl(4 11% 22%)` → `hsl(30 14% 36%)`
+**`src/components/steward/Host.tsx`** (line 6–7)
+- Same swap: `bg-dark` → `paper-bg`, remove the grain overlay div.
 
-4. **Hero gradient overlay** — soften so background lift isn't crushed:
-   - `--gradient-hero` end stop `hsl(4 11% 5% / 0.96)` → `hsl(4 11% 10% / 0.85)`
+```tsx
+<section id="host" className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
+  <div className="container relative grid ...">
+```
 
-No component files need editing — every `text-clay-red`, `border-clay-red`, etc. immediately reads better against the lighter, warmer surfaces while the maroon stays exactly the logo color.
+The `text-cream` class already resolves to dark charcoal (we repurposed `--cream` in the theme switch), so all body copy and headings inside will automatically render dark on the new light backgrounds. Maroon `clay-red` accents remain.
 
-## Technical detail
-
-All edits are in `src/index.css` lines 10–50 and 101–115. `--clay-red` (line 24) is unchanged. Token format remains raw HSL triplets used via `hsl(var(--token))`.
+The Guest cards themselves keep their internal dark image overlays (`from-dark/85`) — those are intentional for image legibility and don't need changing.

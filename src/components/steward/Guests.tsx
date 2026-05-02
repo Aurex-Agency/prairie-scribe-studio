@@ -17,8 +17,7 @@ const guests = [
 
 export const Guests = () => {
   return (
-    <section id="guests" className="bg-dark section-seam relative py-20 md:py-32 overflow-hidden text-cream">
-      <div className="absolute inset-0 grain pointer-events-none" />
+    <section id="guests" className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
       <div className="container relative">
         <div className="max-w-3xl mb-14">
           <Reveal variant="rise" className="flex items-center gap-3 mb-6">
