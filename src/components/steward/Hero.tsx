@@ -47,7 +47,7 @@ export const Hero = () => {
           <img
             src={logoLight}
             alt="The Steward Podcast"
-            className="h-16 md:h-24 w-auto object-contain mb-6 anim-fade drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]"
+            className="h-16 md:h-24 w-auto object-contain mb-6 drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]"
             width={256}
             height={128}
             fetchPriority="high"
