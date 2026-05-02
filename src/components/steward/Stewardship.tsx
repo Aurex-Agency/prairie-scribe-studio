@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 export const Stewardship = () => {
   const lines = [
     "The why behind the work",
-    "The mindset behind the lifestyle",
+    "The mindset it takes to last",
     "The lessons learned from land and livestock",
     "The responsibility carried by the people who live it",
   ];
