@@ -7,21 +7,21 @@
 @layer base {
   :root {
     /* Brand palette — Crimson Maroon (#860114), Charcoal Grey (#473938), Cream White (#FFFCF9) */
-    --primary: 353 99% 26%;            /* #860114 deep brand crimson */
+    --primary: 354 100% 22%;           /* darker — closer to logo #700010 */
     --primary-foreground: 30 100% 99%;
     --primary-dark: 0 0% 100%;         /* now light surface for hero/contact */
 
     --secondary: 4 11% 25%;            /* #473938 charcoal */
     --secondary-foreground: 30 100% 99%;
 
-    --accent: 353 75% 45%;             /* #C8112A — brighter crimson for screen legibility */
+    --accent: 354 100% 26%;            /* darker crimson, logo-aligned */
     --accent-foreground: 30 100% 99%;
 
     --dark: 4 11% 9%;                  /* near-black charcoal — used for text */
     --light: 30 60% 94%;
     --cream: 4 11% 12%;                /* repurposed: dark text on light bg */
     --sage: 4 11% 35%;
-    --clay-red: 354 100% 31%;          /* matches logo red rgb(157,0,17) */
+    --clay-red: 354 100% 24%;          /* deeper than logo red, richer maroon */
 
     /* Semantic mapping — LIGHT ambiance */
     --background: 0 0% 100%;
@@ -36,19 +36,19 @@
     --muted: 30 20% 95%;
     --muted-foreground: 4 11% 30%;
 
-    --destructive: 353 75% 45%;
+    --destructive: 354 100% 26%;
     --destructive-foreground: 30 100% 99%;
 
     --border: 30 15% 86%;
     --input: 30 15% 90%;
-    --ring: 353 75% 45%;
+    --ring: 354 100% 26%;
 
     --radius: 0.25rem;
 
     /* Gradients & shadows */
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 100% / 0) 0%, hsl(0 0% 100% / 0.4) 55%, hsl(0 0% 100% / 0.85) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(30 25% 97%) 0%, hsl(30 20% 92%) 100%);
-    --gradient-brass: linear-gradient(135deg, hsl(353 80% 38%), hsl(353 95% 25%));
+    --gradient-brass: linear-gradient(135deg, hsl(354 100% 26%), hsl(354 100% 17%));
     --shadow-leather: 0 30px 80px -20px hsl(4 11% 30% / 0.25);
     --shadow-brass: 0 14px 36px -10px hsl(353 90% 25% / 0.4);
     --shadow-card: 0 12px 32px -12px hsl(4 11% 30% / 0.2);
