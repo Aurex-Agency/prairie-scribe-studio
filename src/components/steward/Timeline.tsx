@@ -1,3 +1,5 @@
+import { Reveal } from "./Reveal";
+
 const steps = [
   { kicker: "01 / Before daylight", title: "Before daylight",
     body: "The day starts before the world sees it. Feed, check, haul, fix, plan, and keep moving." },
@@ -13,18 +15,18 @@ const steps = [
 
 export const Timeline = () => {
   return (
-    <section className="leather-bg relative py-28 md:py-40 text-cream overflow-hidden">
+    <section className="leather-bg section-seam relative py-24 md:py-36 text-cream overflow-hidden">
       <div className="absolute inset-0 grain pointer-events-none" />
 
       <div className="container relative">
         <div className="max-w-3xl mb-20 md:mb-28">
-          <div className="flex items-center gap-3 mb-6">
+          <Reveal variant="rise" className="flex items-center gap-3 mb-6">
             <span className="w-10 h-px bg-accent" />
             <span className="label text-accent">Chapter 03 — A signature feature</span>
-          </div>
-          <h2 className="display text-5xl md:text-7xl lg:text-8xl text-cream leading-[0.95]">
+          </Reveal>
+          <Reveal variant="rise" delay={120} as="h2" className="display text-5xl md:text-7xl lg:text-8xl text-cream leading-[0.95]">
             The work behind <br />the way of life.
-          </h2>
+          </Reveal>
         </div>
 
         <ol className="relative max-w-5xl mx-auto">
@@ -36,26 +38,26 @@ export const Timeline = () => {
                 i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""
               }`}
             >
-              <div className="pl-12 md:pl-0 md:pr-12 md:text-right">
+              <Reveal variant={i % 2 === 0 ? "left" : "right"} className="pl-12 md:pl-0 md:pr-12 md:text-right">
                 <span className="label text-accent">{s.kicker}</span>
                 <h3 className="display text-4xl md:text-6xl text-cream mt-3">{s.title}</h3>
-              </div>
-              <div className="pl-12 md:pl-12 relative">
+              </Reveal>
+              <Reveal variant={i % 2 === 0 ? "right" : "left"} delay={120} className="pl-12 md:pl-12 relative">
                 <span className="absolute left-2 md:left-[-9px] top-2 w-4 h-4 rounded-full bg-accent ring-4 ring-primary-dark" />
                 <p className="text-lg leading-relaxed text-cream/80 max-w-md">{s.body}</p>
-              </div>
+              </Reveal>
             </li>
           ))}
         </ol>
 
-        <div className="mt-16 md:mt-24 max-w-4xl mx-auto text-center px-4">
+        <Reveal variant="rise" className="mt-16 md:mt-24 max-w-4xl mx-auto text-center px-4">
           <div className="accent-rule mb-10" />
           <blockquote className="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.05] text-cream">
             "Without preserving what matters outside the digital world, we eventually become a{" "}
             <span className="text-accent italic font-body normal-case tracking-normal">product of the system.</span>"
           </blockquote>
           <div className="accent-rule mt-10" />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

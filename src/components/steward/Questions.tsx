@@ -1,3 +1,5 @@
+import { Reveal } from "./Reveal";
+
 const qs = [
   { q: "Why do you live this way?", a: "Not the surface answer. The honest one.", off: "lg:ml-0" },
   { q: "How did you learn what you know?", a: "From family, failure, pressure, animals, land, and years of repetition.", off: "lg:ml-24" },
@@ -19,38 +21,45 @@ const Wave = () => (
 
 export const Questions = () => {
   return (
-    <section className="bg-dark relative py-24 md:py-36 overflow-hidden text-cream">
+    <section className="bg-dark section-seam relative py-20 md:py-32 overflow-hidden text-cream">
       <div className="absolute inset-0 grain pointer-events-none" />
       <div className="container relative max-w-6xl">
-        <div className="flex items-center gap-3 mb-8">
+        <Reveal variant="rise" className="flex items-center gap-3 mb-8">
           <span className="w-10 h-px bg-clay-red" />
           <span className="label text-clay-red">Chapter 06 — A pause</span>
-        </div>
-        <h2 className="display text-5xl md:text-7xl lg:text-8xl text-cream leading-[0.95] max-w-4xl">
+        </Reveal>
+        <Reveal variant="rise" delay={120} as="h2" className="display text-5xl md:text-7xl lg:text-8xl text-cream leading-[0.95] max-w-4xl">
           What this podcast is really asking.
-        </h2>
+        </Reveal>
 
-        <Wave />
+        <Reveal variant="fade" delay={240}>
+          <Wave />
+        </Reveal>
 
         <div className="mt-16 md:mt-24 space-y-14 md:space-y-20">
           {qs.map((item, i) => (
-            <div key={item.q} className={`max-w-3xl ${item.off}`}>
+            <Reveal
+              key={item.q}
+              variant={i % 2 === 0 ? "left" : "right"}
+              delay={i * 120}
+              className={`max-w-3xl ${item.off}`}
+            >
               <span className="font-condensed text-clay-red text-sm tracking-[0.2em]">Q.0{i + 1}</span>
               <h3 className="display text-3xl sm:text-5xl md:text-6xl text-cream mt-3 leading-[1]">
                 {item.q}
               </h3>
               <p className="mt-5 text-lg italic font-body text-cream/55 max-w-xl">{item.a}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mt-20 md:mt-28 max-w-3xl">
+        <Reveal variant="rise" className="mt-20 md:mt-28 max-w-3xl">
           <Wave />
           <p className="mt-6 font-display text-3xl md:text-5xl text-cream leading-tight">
             The Steward Podcast is where those answers have{" "}
             <span className="text-clay-red italic font-body normal-case tracking-normal">room to breathe.</span>
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

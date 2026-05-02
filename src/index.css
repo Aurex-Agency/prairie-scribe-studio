@@ -70,6 +70,10 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     font-feature-settings: "ss01", "kern";
+    overscroll-behavior-y: none;
+  }
+  section {
+    scroll-margin-top: 80px;
   }
   h1, h2, h3, h4 {
     @apply font-display tracking-tight;
@@ -141,6 +145,42 @@
 
   .anim-rise { animation: rise 0.9s var(--transition-smooth) both; }
   .anim-fade { animation: fadeUp 0.8s var(--transition-smooth) both; }
+
+  /* ===== Scroll Reveal ===== */
+  .reveal {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  }
+  .reveal-rise  { transform: translate3d(0, 28px, 0); }
+  .reveal-fade  { transform: translate3d(0, 10px, 0); }
+  .reveal-left  { transform: translate3d(-32px, 0, 0); }
+  .reveal-right { transform: translate3d(32px, 0, 0); }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Soft seam between alternating sections */
+  .section-seam::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--clay-red) / 0.45), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 @keyframes rise {
