@@ -53,8 +53,8 @@ export const Timeline = () => {
         <Reveal variant="rise" className="mt-16 md:mt-24 max-w-4xl mx-auto text-center px-4">
           <div className="accent-rule mb-10" />
           <blockquote className="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.05] text-cream">
-            "Without preserving what matters outside the digital world, we eventually become a{" "}
-            <span className="text-accent italic font-body normal-case tracking-normal">product of the system.</span>"
+            "What is preserved with intention becomes the{" "}
+            <span className="text-accent italic font-body normal-case tracking-normal">inheritance of the next generation.</span>"
           </blockquote>
           <div className="accent-rule mt-10" />
         </Reveal>
