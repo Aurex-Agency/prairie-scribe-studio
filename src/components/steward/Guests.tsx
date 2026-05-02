@@ -25,7 +25,7 @@ export const Guests = () => {
             <span className="label text-clay-red">Chapter 02 — Who sits at the table</span>
           </Reveal>
           <Reveal variant="rise" delay={120} as="h2" className="display text-5xl md:text-7xl text-cream leading-[0.95]">
-            Conversations with people who have <span className="text-clay-red">dirt on their boots.</span>
+            Conversations with people who <span className="text-clay-red">actually live it.</span>
           </Reveal>
           <Reveal variant="fade" delay={240} as="p" className="mt-7 text-lg leading-relaxed text-cream/75 max-w-2xl">
             Every episode brings in someone shaped by the western and agricultural way of life — not to perform
