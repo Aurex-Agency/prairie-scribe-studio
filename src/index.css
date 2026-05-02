@@ -21,7 +21,7 @@
     --light: 30 60% 94%;
     --cream: 30 100% 99%;              /* #FFFCF9 */
     --sage: 4 11% 35%;
-    --clay-red: 353 82% 60%;           /* luminous crimson for accents on dark bg */
+    --clay-red: 354 100% 31%;          /* matches logo red rgb(157,0,17) */
 
     /* Semantic mapping — DARK ambiance by default */
     --background: 4 11% 11%;
