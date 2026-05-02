@@ -33,7 +33,7 @@ export const Nav = () => {
             <img
               src={logoLight}
               alt="The Steward Podcast"
-              className="h-10 md:h-12 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-12 md:h-14 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] transition-transform duration-500 group-hover:scale-[1.03]"
               width={400}
               height={200}
             />
