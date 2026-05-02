@@ -28,12 +28,12 @@ export const Nav = () => {
         }`}
         style={scrolled ? { backgroundImage: "var(--grain)" } : undefined}
       >
-        <div className="container flex items-center justify-between py-4 md:py-5">
+        <div className="container flex items-center justify-between py-3 md:py-4">
           <a href="#top" className="flex items-center leading-none text-cream group">
             <img
               src={logoLight}
               alt="The Steward Podcast"
-              className="h-12 md:h-14 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] transition-transform duration-500 group-hover:scale-[1.03]"
               width={400}
               height={200}
             />
@@ -57,9 +57,9 @@ export const Nav = () => {
           <button
             aria-label="Open menu"
             onClick={() => setOpen(true)}
-            className="lg:hidden text-cream p-2"
+            className="lg:hidden text-cream p-2 flex items-center"
           >
-            <Menu size={26} />
+            <Menu size={32} />
           </button>
         </div>
       </header>
