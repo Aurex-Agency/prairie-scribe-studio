@@ -1,4 +1,5 @@
 import portrait from "@/assets/host-portrait.webp";
+import portraitMobile from "@/assets/host-portrait-mobile.webp";
 import { Reveal } from "./Reveal";
 
 export const Host = () => {
@@ -7,14 +8,18 @@ export const Host = () => {
       <div className="container relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
         <Reveal variant="left" className="lg:col-span-5 lg:-mt-32 relative">
           <div className="relative shadow-leather">
-            <img
-              src={portrait}
-              alt="N'shaun Cameron, host of The Steward Podcast, in north Mississippi"
-              loading="lazy"
-              className="w-full h-auto object-cover"
-              width={1100}
-              height={1400}
-            />
+            <picture>
+              <source media="(max-width: 767px)" srcSet={portraitMobile} />
+              <img
+                src={portrait}
+                alt="N'shaun Cameron, host of The Steward Podcast, in north Mississippi"
+                loading="lazy"
+                className="w-full h-auto object-cover"
+                width={1100}
+                height={1400}
+                decoding="async"
+              />
+            </picture>
             <div className="absolute inset-0 ring-1 ring-cream/10" />
           </div>
           <p className="font-body italic text-sm text-cream/55 mt-4 max-w-xs">
