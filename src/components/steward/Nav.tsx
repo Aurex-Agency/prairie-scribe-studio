@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoLight from "@/assets/steward-logo.png";
+import logoLight from "@/assets/steward-logo-light.png";
+import logoDark from "@/assets/steward-logo.png";
 
 const links = [
   { href: "#episodes", label: "Episodes" },
@@ -11,10 +12,14 @@ const links = [
 
 export const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      setPastHero(window.scrollY > window.innerHeight - 80);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -31,9 +36,9 @@ export const Nav = () => {
         <div className="container flex items-center justify-between py-3 md:py-4">
           <a href="#top" className="flex items-center leading-none text-cream group">
             <img
-              src={logoLight}
+              src={pastHero ? logoDark : logoLight}
               alt="The Steward Podcast"
-              className="h-16 md:h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-16 md:h-20 w-auto object-contain transition-opacity duration-300 group-hover:scale-[1.03]"
               width={400}
               height={200}
             />
