@@ -15,15 +15,16 @@ export const Stewardship = () => {
             <span className="label text-clay-red">Chapter 01 — Why this exists</span>
           </div>
           <h2 className="display text-5xl sm:text-7xl md:text-8xl text-cream">
-            Not cowboy content. <br />
-            <span className="text-clay-red">Stewardship.</span>
+            This is <span className="text-clay-red">stewardship.</span>
           </h2>
           <p className="mt-10 max-w-xl text-lg leading-relaxed text-cream/80">
-            Social media shows the hat, the horse, and the highlight. The Steward Podcast goes behind the image and
-            asks what it really takes to live this way.
+            Stewardship is the quiet weight behind the way of life — the responsibility of caring for land,
+            livestock, and the people who depend on both. It is not ownership. It is not performance. It is care
+            that outlasts the person doing it.
           </p>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-cream/80">
-            The goal is not to make people chase a look. The goal is to help them respect the life.
+            The Steward Podcast exists to honor that work and carry the wisdom forward, so what was learned in the
+            dirt does not get lost to the noise.
           </p>
         </div>
 
