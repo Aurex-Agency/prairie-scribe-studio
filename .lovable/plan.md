@@ -1,41 +1,41 @@
 ## Goal
 
-Fix the ugly fading bands on the left/right edges of the Chapter 02 marquee.
+Replace the existing blockquote in the Timeline section with an inspirational line that speaks to the heart of The Steward Podcast — preserving knowledge, wisdom, and the western/agricultural way of life across generations.
 
-## Cause
+## Current quote
 
-`.marquee-mask` (in `src/index.css` lines 213–216) uses CSS `mask-image: linear-gradient(transparent → #000 → transparent)`. That fades the cards' alpha to 0 at the edges. On the new white `paper-bg` background it looks like a dirty grey wash because the white cards are fading to nothing against a slightly warmer page.
+> "Without preserving what matters outside the digital world, we eventually become a product of the system."
 
-## Fix
+Located in `src/components/steward/Timeline.tsx` (lines 55–58).
 
-Replace the alpha mask with two solid-color gradient overlays that match the section's `paper-bg` color (`hsl(30 30% 97%)`). The cards stay fully opaque; the overlay simply covers the card edges with the same color as the page, producing a clean "cards slide out under the page" effect.
+## Proposed replacement
 
-### Change in `src/index.css` lines 213–216
+> "What is preserved with intention becomes the **inheritance of the next generation.**"
 
-```css
-.marquee-mask {
-  position: relative;
-}
-.marquee-mask::before,
-.marquee-mask::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: clamp(48px, 8vw, 140px);
-  pointer-events: none;
-  z-index: 2;
-}
-.marquee-mask::before {
-  left: 0;
-  background: linear-gradient(90deg, hsl(30 30% 97%) 0%, hsl(30 30% 97% / 0) 100%);
-}
-.marquee-mask::after {
-  right: 0;
-  background: linear-gradient(270deg, hsl(30 30% 97%) 0%, hsl(30 30% 97% / 0) 100%);
-}
+This ties directly to the site's themes already present elsewhere:
+- Stewardship section: "care that outlasts the person doing it"
+- Mission line: "carried forward across generations"
+- Field note items: "What gets passed down"
+
+The italic accent fragment ("inheritance of the next generation.") keeps the same visual rhythm as the current quote — a serif italic phrase styled with `text-accent` closing out a display-font sentence.
+
+## Change
+
+Single edit in `src/components/steward/Timeline.tsx`:
+
+```tsx
+<blockquote className="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.05] text-cream">
+  "What is preserved with intention becomes the{" "}
+  <span className="text-accent italic font-body normal-case tracking-normal">
+    inheritance of the next generation.
+  </span>"
+</blockquote>
 ```
 
-Width uses `clamp` so the overlay shrinks on mobile (48px min) and grows on wide screens (up to 140px) without ever dominating the cards.
+No styling, layout, or surrounding rules change.
 
-This keeps the smooth-edge effect, makes it color-correct against the warm white paper background, and removes the trash-looking transparent fade entirely.
+## Alternatives (let me know if you'd prefer one)
+
+1. "The story is only finished when **someone is left to carry it.**"
+2. "Wisdom does not survive by accident — it survives because **someone refused to let it go.**"
+3. "Every generation either passes it forward, or **lets it disappear quietly.**"
