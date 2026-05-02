@@ -10,7 +10,7 @@ export const Hero = () => {
           src={heroImg}
           alt="Shadow of a cowboy on horseback cast across cracked desert ground"
           className="w-full h-full object-cover slow-zoom"
-          style={{ objectPosition: "70% center" }}
+          style={{ objectPosition: "70% top" }}
           width={1536}
           height={2048}
         />
