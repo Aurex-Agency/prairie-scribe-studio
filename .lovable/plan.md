@@ -1,42 +1,41 @@
 ## Goal
 
-Make the Chapter 02 (Guests) marquee look polished and ensure all card text is clearly readable.
+Fix the ugly fading bands on the left/right edges of the Chapter 02 marquee.
 
-## Problems with current section
+## Cause
 
-- Card title + copy use `text-cream`, which we repurposed to **dark charcoal** for the light theme. Sitting on a dark image gradient at the bottom of the card, dark text disappears.
-- "Conversation" tag uses `text-accent` over `bg-dark/40` — low contrast on the now light theme.
-- Cards are pure image with overlaid text; the new site is white/cream so floating dark images with overlays feel disconnected from the page.
-- `from-dark/85` references a token that no longer reads dark consistently.
+`.marquee-mask` (in `src/index.css` lines 213–216) uses CSS `mask-image: linear-gradient(transparent → #000 → transparent)`. That fades the cards' alpha to 0 at the edges. On the new white `paper-bg` background it looks like a dirty grey wash because the white cards are fading to nothing against a slightly warmer page.
 
-## Redesign (single file: `src/components/steward/Guests.tsx`)
+## Fix
 
-Switch from "image-with-overlay-caption" to a **two-pane editorial card**: image on top, white info panel underneath. This both restores readability and looks more premium.
+Replace the alpha mask with two solid-color gradient overlays that match the section's `paper-bg` color (`hsl(30 30% 97%)`). The cards stay fully opaque; the overlay simply covers the card edges with the same color as the page, producing a clean "cards slide out under the page" effect.
 
-### Card layout
-- Wrapper: `w-[19rem] sm:w-[21rem]` (drop fixed `h-[28rem]`), `bg-white`, `shadow-leather`, `ring-1 ring-black/5`, subtle hover lift `group-hover:-translate-y-1`.
-- **Image pane**: fixed `h-72 sm:h-80`, full-cover image with longer zoom on hover (`duration-[1400ms]`, `scale-110`).
-- Image overlay: lighter `from-black/55 via-black/10 to-transparent` (just for the tag chip contrast, not for text).
-- **Tag chip** ("Conversation"): white pill `bg-white/90 backdrop-blur-sm`, clay-red text, condensed uppercase tracking — reads on any image.
-- **Info panel** (below image, white): 
-  - Title: `font-display text-2xl md:text-3xl` in dark charcoal `hsl(4 11% 12%)`.
-  - 10px clay-red rule.
-  - Copy: `text-sm` in muted charcoal `hsl(4 11% 30%)` for proper hierarchy.
+### Change in `src/index.css` lines 213–216
 
-Inline `style={{ color: ... }}` is used on the title/copy/tag so we don't fight the section-level `text-cream` (which is now dark). This guarantees correct contrast regardless of token reuse.
+```css
+.marquee-mask {
+  position: relative;
+}
+.marquee-mask::before,
+.marquee-mask::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(48px, 8vw, 140px);
+  pointer-events: none;
+  z-index: 2;
+}
+.marquee-mask::before {
+  left: 0;
+  background: linear-gradient(90deg, hsl(30 30% 97%) 0%, hsl(30 30% 97% / 0) 100%);
+}
+.marquee-mask::after {
+  right: 0;
+  background: linear-gradient(270deg, hsl(30 30% 97%) 0%, hsl(30 30% 97% / 0) 100%);
+}
+```
 
-### Marquee polish
-- Increase gap from `gap-6` to `gap-7`.
-- Add `py-2` to the masked container and `px-2` to the track so the cards' shadows aren't clipped against the mask edge.
+Width uses `clamp` so the overlay shrinks on mobile (48px min) and grows on wide screens (up to 140px) without ever dominating the cards.
 
-### Header / CTA
-- Untouched — already light-theme correct.
-
-## Result
-
-- Image stays the hero of the card.
-- Title and description are now dark text on a clean white panel — fully readable in any browser/lighting.
-- The white card with leather shadow looks intentional against the warm `paper-bg`.
-- Marquee retains its motion but feels less crowded.
-
-No other files touched. Token system unchanged.
+This keeps the smooth-edge effect, makes it color-correct against the warm white paper background, and removes the trash-looking transparent fade entirely.
