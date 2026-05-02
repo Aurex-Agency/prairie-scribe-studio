@@ -1,7 +1,37 @@
-const cols = [
-  { title: "Watch", links: ["YouTube", "Latest Episode", "Episode Archive"] },
-  { title: "Listen", links: ["Spotify", "Apple Podcasts", "Podcast RSS"] },
-  { title: "Connect", links: ["Instagram", "Guest Suggestions", "Sponsorship"] },
+import { Youtube, Instagram, Facebook, Music2 } from "lucide-react";
+
+type SocialLink = { name: string; url: string };
+
+const cols: { title: string; links: SocialLink[] }[] = [
+  {
+    title: "Watch",
+    links: [
+      { name: "YouTube", url: "https://youtube.com/@thestewardpodcast" },
+      { name: "TikTok", url: "https://www.tiktok.com/@thestewardpodcast" },
+    ],
+  },
+  {
+    title: "Listen",
+    links: [
+      { name: "Spotify", url: "https://open.spotify.com/show/7p2tCM7qRNsOmjox4cNhVE" },
+      { name: "Apple Podcasts", url: "https://podcasts.apple.com/us/podcast/the-steward-podcast/id1883864172" },
+    ],
+  },
+  {
+    title: "Connect",
+    links: [
+      { name: "Instagram", url: "https://www.instagram.com/thestewardpodcast" },
+      { name: "Facebook", url: "http://facebook.com/thestewardpodcast" },
+    ],
+  },
+];
+
+const socialIcons = [
+  { name: "YouTube", url: "https://youtube.com/@thestewardpodcast", Icon: Youtube },
+  { name: "Instagram", url: "https://www.instagram.com/thestewardpodcast", Icon: Instagram },
+  { name: "Facebook", url: "http://facebook.com/thestewardpodcast", Icon: Facebook },
+  { name: "TikTok", url: "https://www.tiktok.com/@thestewardpodcast", Icon: Music2 },
+  { name: "Spotify", url: "https://open.spotify.com/show/7p2tCM7qRNsOmjox4cNhVE", Icon: Music2 },
 ];
 
 export const Footer = () => {
@@ -19,6 +49,21 @@ export const Footer = () => {
               <span className="w-8 h-px bg-accent" />
               <span className="label text-accent">Stories worth preserving</span>
             </div>
+
+            <div className="mt-8 flex items-center gap-3 flex-wrap">
+              {socialIcons.map(({ name, url, Icon }) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="w-10 h-10 flex items-center justify-center border border-cream/20 text-cream/80 hover:text-clay-red hover:border-clay-red transition-colors"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -27,9 +72,14 @@ export const Footer = () => {
                 <h4 className="label text-accent mb-4">{c.title}</h4>
                 <ul className="space-y-3">
                   {c.links.map((l) => (
-                    <li key={l}>
-                      <a href="#" className="font-body text-cream/80 hover:text-accent transition-colors text-sm">
-                        {l}
+                    <li key={l.name}>
+                      <a
+                        href={l.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-cream/80 hover:text-accent transition-colors text-sm"
+                      >
+                        {l.name}
                       </a>
                     </li>
                   ))}

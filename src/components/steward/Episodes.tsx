@@ -8,10 +8,12 @@ const recent = [
 ];
 
 const platforms = [
-  { name: "YouTube", url: "https://www.youtube.com/@thestewardpodcast" },
-  { name: "Spotify", url: "#" },
-  { name: "Apple Podcasts", url: "#" },
-  { name: "Instagram", url: "#" },
+  { name: "YouTube", url: "https://youtube.com/@thestewardpodcast" },
+  { name: "Spotify", url: "https://open.spotify.com/show/7p2tCM7qRNsOmjox4cNhVE" },
+  { name: "Apple Podcasts", url: "https://podcasts.apple.com/us/podcast/the-steward-podcast/id1883864172" },
+  { name: "Instagram", url: "https://www.instagram.com/thestewardpodcast" },
+  { name: "Facebook", url: "http://facebook.com/thestewardpodcast" },
+  { name: "TikTok", url: "https://www.tiktok.com/@thestewardpodcast" },
 ];
 
 export const Episodes = () => {
@@ -90,6 +92,8 @@ export const Episodes = () => {
                 {platforms.map((p, i) => (
                   <Reveal as="a" key={p.name} variant="fade" delay={i * 80}
                     href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-between border border-cream/15 text-cream/85 hover:border-clay-red hover:text-clay-red transition-colors px-4 py-3 font-condensed uppercase tracking-[0.18em] text-xs"
                   >
                     {p.name}
