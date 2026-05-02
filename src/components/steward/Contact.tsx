@@ -12,23 +12,13 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="bg-primary-dark section-seam relative overflow-hidden text-cream">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <Reveal variant="left" className="relative min-h-[28rem] lg:min-h-[44rem]">
-          <img
-            src={conversation}
-            alt="Two people in honest conversation at a wooden table with podcast microphones"
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/40 to-primary-dark/80 lg:bg-gradient-to-l" />
-          <div className="absolute bottom-8 left-8 right-8">
+      <div className="leather-bg relative py-20 md:py-28 px-6 md:px-16 lg:px-20">
+        <div className="absolute inset-0 grain" />
+        <Reveal variant="right" delay={120} className="relative max-w-3xl mx-auto">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-10 h-px bg-accent" />
             <span className="label text-accent">Chapter 07 — Pull up a chair</span>
           </div>
-        </Reveal>
-
-        <div className="leather-bg relative py-20 md:py-28 px-6 md:px-16 lg:px-20">
-          <div className="absolute inset-0 grain" />
-          <Reveal variant="right" delay={120} className="relative max-w-xl">
             <h2 className="display text-4xl sm:text-6xl md:text-7xl text-cream leading-[1]">
               Know somebody with a story{" "}
               <span className="text-accent italic font-body normal-case tracking-normal">worth preserving?</span>
