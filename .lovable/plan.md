@@ -1,30 +1,26 @@
 ## Goal
 
-Make Chapter 02 (Guests) and Chapter 05 (Host) sections match the new light theme — they currently use `bg-dark` so they still render as dark slabs with hard-to-read text.
+Make "The Steward" and "& Podcast" wordmarks dark on the header logo so they're readable against the new white background. The "Steward" lockup graphic stays maroon.
 
 ## Cause
 
-Both sections hardcode `className="bg-dark ..."`, which maps to the still-dark `--dark` token (kept dark intentionally for image overlays). The other sections use `paper-bg` / `leather-bg` which were already converted to light surfaces, so they look correct.
+`Nav.tsx` imports `steward-logo-light.png`, which has the wordmark text in cream — invisible/blown out on white. The repo already contains `steward-logo.png` with the same artwork but with the wordmark in **dark charcoal** (verified: 23k near-black pixels vs the light version's 30k near-white pixels; the maroon "Steward" lockup is identical in both).
 
-## Changes
+## Change
 
-**`src/components/steward/Guests.tsx`** (line 20–21)
-- Replace `bg-dark` with `paper-bg`.
-- Remove the now-unneeded `<div className="absolute inset-0 grain pointer-events-none" />` (grain reads as dark spots on white).
+**`src/components/steward/Nav.tsx`**
 
-```tsx
-<section id="guests" className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
-  <div className="container relative">
-```
+1. Line 3 — swap the import to the dark-wordmark variant:
+   ```tsx
+   import logoLight from "@/assets/steward-logo.png";
+   ```
+   (Variable name kept the same to avoid touching every JSX usage.)
 
-**`src/components/steward/Host.tsx`** (line 6–7)
-- Same swap: `bg-dark` → `paper-bg`, remove the grain overlay div.
+2. Line 36 — drop the heavy black drop-shadow that was only there to lift the white wordmark off transparent backgrounds; on white it just produces a smudge:
+   ```tsx
+   className="h-16 md:h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+   ```
 
-```tsx
-<section id="host" className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
-  <div className="container relative grid ...">
-```
+The mobile drawer (`leather-bg`, which is now also light) will pick up the dark wordmark too — that's correct.
 
-The `text-cream` class already resolves to dark charcoal (we repurposed `--cream` in the theme switch), so all body copy and headings inside will automatically render dark on the new light backgrounds. Maroon `clay-red` accents remain.
-
-The Guest cards themselves keep their internal dark image overlays (`from-dark/85`) — those are intentional for image legibility and don't need changing.
+No other files need to change.

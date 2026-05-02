@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoLight from "@/assets/steward-logo-light.png";
+import logoLight from "@/assets/steward-logo.png";
 
 const links = [
   { href: "#episodes", label: "Episodes" },
@@ -33,7 +33,7 @@ export const Nav = () => {
             <img
               src={logoLight}
               alt="The Steward Podcast"
-              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-16 md:h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
               width={400}
               height={200}
             />
