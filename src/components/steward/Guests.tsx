@@ -29,18 +29,12 @@ export const Guests = () => {
 
         <Reveal variant="fade" delay={120}>
           <ul className="border-t border-border/60">
-            {guests.map((g, i) => (
+            {guests.map((g) => (
               <li
                 key={g.title}
                 className="group grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 items-baseline border-b border-border/60 py-7 md:py-9 px-2 md:px-4 transition-colors duration-300 hover:bg-[hsl(30_35%_94%)]"
               >
-                <div className="md:col-span-3 flex items-center gap-3 transition-transform duration-300 group-hover:translate-x-1">
-                  <span className="w-6 h-px bg-clay-red" />
-                  <span className="font-condensed font-semibold uppercase tracking-[0.28em] text-xs text-clay-red">
-                    Chapter · {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <div className="md:col-span-4">
+                <div className="md:col-span-5 transition-transform duration-300 group-hover:translate-x-1">
                   <h3
                     className="font-display uppercase tracking-wide text-3xl md:text-4xl leading-none inline-block border-b border-transparent pb-1 transition-colors duration-300 group-hover:border-clay-red"
                     style={{ color: "hsl(4 11% 12%)" }}
@@ -49,11 +43,12 @@ export const Guests = () => {
                   </h3>
                 </div>
                 <p
-                  className="md:col-span-5 font-body text-base md:text-lg leading-relaxed"
+                  className="md:col-span-7 font-body text-base md:text-lg leading-relaxed"
                   style={{ color: "hsl(4 11% 30%)" }}
                 >
                   {g.copy}
                 </p>
+
               </li>
             ))}
           </ul>
