@@ -1,14 +1,57 @@
 import { useState } from "react";
 import { Reveal } from "./Reveal";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", email: "", topic: "Guest Suggestion", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (submitting) return;
+    setError(null);
+    setSubmitting(true);
+    try {
+      const id = crypto.randomUUID();
+      const { error: insertError } = await supabase
+        .from("contact_submissions")
+        .insert({ id, name: form.name, email: form.email, topic: form.topic, message: form.message });
+      if (insertError) throw insertError;
+
+      await Promise.allSettled([
+        supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "contact-confirmation",
+            recipientEmail: form.email,
+            idempotencyKey: `contact-confirm-${id}`,
+            templateData: { name: form.name, topic: form.topic },
+          },
+        }),
+        supabase.functions.invoke("send-transactional-email", {
+          body: {
+            templateName: "contact-notification",
+            recipientEmail: "nshaun@thestewardpod.com",
+            idempotencyKey: `contact-notify-${id}`,
+            templateData: {
+              name: form.name,
+              email: form.email,
+              topic: form.topic,
+              message: form.message,
+            },
+          },
+        }),
+      ]);
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
+
 
   return (
     <section id="contact" className="paper-bg section-seam relative overflow-hidden text-cream">
@@ -79,16 +122,24 @@ export const Contact = () => {
                 />
               </Field>
 
+              {error && (
+                <p className="font-body text-sm text-clay-red">{error}</p>
+              )}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
                 <p className="font-body italic text-sm text-cream/60 order-2 sm:order-1">
                   Real stories only. No spam. No gimmicks.
                 </p>
-                <button type="submit" className="btn-brass w-full sm:w-auto order-1 sm:order-2">
-                  Send It To The Steward
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="btn-brass w-full sm:w-auto order-1 sm:order-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {submitting ? "Sending…" : "Send It To The Steward"}
                 </button>
               </div>
             </form>
           )}
+
         </Reveal>
       </div>
 
