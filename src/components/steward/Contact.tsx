@@ -122,16 +122,24 @@ export const Contact = () => {
                 />
               </Field>
 
+              {error && (
+                <p className="font-body text-sm text-clay-red">{error}</p>
+              )}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
                 <p className="font-body italic text-sm text-cream/60 order-2 sm:order-1">
                   Real stories only. No spam. No gimmicks.
                 </p>
-                <button type="submit" className="btn-brass w-full sm:w-auto order-1 sm:order-2">
-                  Send It To The Steward
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="btn-brass w-full sm:w-auto order-1 sm:order-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {submitting ? "Sending…" : "Send It To The Steward"}
                 </button>
               </div>
             </form>
           )}
+
         </Reveal>
       </div>
 
