@@ -74,8 +74,8 @@ export const Episodes = () => {
                   <a href={e.url} target="_blank" rel="noopener noreferrer" className="block py-5 group">
                     <div className="flex items-baseline gap-4">
                       <span className="font-condensed text-clay-red text-sm">EP {e.n}</span>
-                      <span className="label text-cream/50 ml-auto">{e.len}</span>
                     </div>
+
                     <h4 className="font-display text-2xl text-cream mt-1.5 group-hover:text-clay-red transition-colors">
                       {e.title}
                     </h4>
