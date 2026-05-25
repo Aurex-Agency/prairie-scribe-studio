@@ -1,24 +1,12 @@
-import rancher from "@/assets/guest-rancher.webp";
-import rancherSmall from "@/assets/guest-rancher-sm.webp";
-import farmer from "@/assets/guest-farmer.webp";
-import farmerSmall from "@/assets/guest-farmer-sm.webp";
-import horseman from "@/assets/guest-horseman.webp";
-import horsemanSmall from "@/assets/guest-horseman-sm.webp";
-import rodeo from "@/assets/guest-rodeo.webp";
-import rodeoSmall from "@/assets/guest-rodeo-sm.webp";
-import stock from "@/assets/guest-stock.webp";
-import stockSmall from "@/assets/guest-stock-sm.webp";
-import ag from "@/assets/guest-ag.webp";
-import agSmall from "@/assets/guest-ag-sm.webp";
 import { Reveal } from "./Reveal";
 
 const guests = [
-  { title: "Ranchers", copy: "Land, livestock, patience, pressure, and the daily choices nobody sees.", img: rancher, imgSmall: rancherSmall },
-  { title: "Farmers", copy: "The discipline of seasons, soil, equipment, uncertainty, and staying with it.", img: farmer, imgSmall: farmerSmall },
-  { title: "Horsemen", copy: "Feel, timing, trust, humility, and what horses teach better than people can.", img: horseman, imgSmall: horsemanSmall },
-  { title: "Rodeo Athletes", copy: "Preparation, pain, travel, faith, and the cost behind eight seconds.", img: rodeo, imgSmall: rodeoSmall },
-  { title: "Stock Contractors", copy: "Breeding, hauling, caring, judging, and respecting the animal side of the arena.", img: stock, imgSmall: stockSmall },
-  { title: "Ag Professionals", copy: "The modern pressure, business decisions, and knowledge that keep rural life moving.", img: ag, imgSmall: agSmall },
+  { title: "Ranchers", copy: "Land, livestock, patience, pressure, and the daily choices nobody sees." },
+  { title: "Farmers", copy: "The discipline of seasons, soil, equipment, uncertainty, and staying with it." },
+  { title: "Horsemen", copy: "Feel, timing, trust, humility, and what horses teach better than people can." },
+  { title: "Rodeo Athletes", copy: "Preparation, pain, travel, faith, and the cost behind eight seconds." },
+  { title: "Stock Contractors", copy: "Breeding, hauling, caring, judging, and respecting the animal side of the arena." },
+  { title: "Ag Professionals", copy: "The modern pressure, business decisions, and knowledge that keep rural life moving." },
 ];
 
 export const Guests = () => {
@@ -38,66 +26,45 @@ export const Guests = () => {
             expertise, but to pass down what experience taught them.
           </Reveal>
         </div>
-      </div>
 
-      <Reveal variant="fade" className="marquee-mask overflow-hidden py-2">
-        <div className="marquee-track flex gap-7 w-max px-2">
-          {guests.map((g) => (
-            <GuestCard key={`a-${g.title}`} g={g} />
-          ))}
-          {guests.map((g) => (
-            <GuestCard key={`b-${g.title}`} g={g} ariaHidden />
-          ))}
-        </div>
-      </Reveal>
-
-      <div className="container mt-16 flex justify-center">
-        <Reveal variant="rise" delay={120}>
-          <a href="#episodes" className="btn-brass">Start With an Episode</a>
+        <Reveal variant="fade" delay={120}>
+          <ul className="border-t border-border/60">
+            {guests.map((g, i) => (
+              <li
+                key={g.title}
+                className="group grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 items-baseline border-b border-border/60 py-7 md:py-9 px-2 md:px-4 transition-colors duration-300 hover:bg-[hsl(30_35%_94%)]"
+              >
+                <div className="md:col-span-3 flex items-center gap-3 transition-transform duration-300 group-hover:translate-x-1">
+                  <span className="w-6 h-px bg-clay-red" />
+                  <span className="font-condensed font-semibold uppercase tracking-[0.28em] text-xs text-clay-red">
+                    Chapter · {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="md:col-span-4">
+                  <h3
+                    className="font-display uppercase tracking-wide text-3xl md:text-4xl leading-none inline-block border-b border-transparent pb-1 transition-colors duration-300 group-hover:border-clay-red"
+                    style={{ color: "hsl(4 11% 12%)" }}
+                  >
+                    {g.title}
+                  </h3>
+                </div>
+                <p
+                  className="md:col-span-5 font-body text-base md:text-lg leading-relaxed"
+                  style={{ color: "hsl(4 11% 30%)" }}
+                >
+                  {g.copy}
+                </p>
+              </li>
+            ))}
+          </ul>
         </Reveal>
+
+        <div className="mt-16 flex justify-center">
+          <Reveal variant="rise" delay={120}>
+            <a href="#episodes" className="btn-brass">Start With an Episode</a>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
 };
-
-const GuestCard = ({ g, ariaHidden = false }: { g: typeof guests[number]; ariaHidden?: boolean }) => (
-  <article
-    aria-hidden={ariaHidden || undefined}
-    className="group shrink-0 w-[19rem] sm:w-[21rem]"
-  >
-    <div className="relative overflow-hidden bg-white shadow-leather ring-1 ring-black/5 transition-transform duration-500 ease-out group-hover:-translate-y-1">
-      <div className="relative h-72 sm:h-80 overflow-hidden">
-        <picture>
-          <source media="(max-width: 767px)" srcSet={g.imgSmall} />
-          <img
-            src={g.img}
-            alt={ariaHidden ? "" : `${g.title} — documentary portrait for The Steward Podcast`}
-            loading="lazy"
-            width={420}
-            height={578}
-            decoding="async"
-            className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-        <div className="absolute top-4 left-4">
-          <span
-            className="font-condensed font-semibold uppercase tracking-[0.22em] text-[0.65rem] px-2.5 py-1 bg-white/90 backdrop-blur-sm"
-            style={{ color: "hsl(var(--clay-red))" }}
-          >
-            Conversation
-          </span>
-        </div>
-      </div>
-      <div className="p-6 bg-white">
-        <h3 className="font-display text-2xl md:text-3xl tracking-wide" style={{ color: "hsl(4 11% 12%)" }}>
-          {g.title}
-        </h3>
-        <div className="w-10 h-px bg-clay-red my-3" />
-        <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(4 11% 30%)" }}>
-          {g.copy}
-        </p>
-      </div>
-    </div>
-  </article>
-);
