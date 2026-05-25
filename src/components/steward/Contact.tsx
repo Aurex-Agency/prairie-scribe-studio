@@ -19,30 +19,8 @@ export const Contact = () => {
         .from("contact_submissions")
         .insert({ id, name: form.name, email: form.email, topic: form.topic, message: form.message });
       if (insertError) throw insertError;
-
-      await Promise.allSettled([
-        supabase.functions.invoke("send-transactional-email", {
-          body: {
-            templateName: "contact-confirmation",
-            recipientEmail: form.email,
-            idempotencyKey: `contact-confirm-${id}`,
-            templateData: { name: form.name, topic: form.topic },
-          },
-        }),
-        supabase.functions.invoke("send-transactional-email", {
-          body: {
-            templateName: "contact-notification",
-            recipientEmail: "nshaun@thestewardpod.com",
-            idempotencyKey: `contact-notify-${id}`,
-            templateData: {
-              name: form.name,
-              email: form.email,
-              topic: form.topic,
-              message: form.message,
-            },
-          },
-        }),
-      ]);
+      // Confirmation + notification emails are sent server-side via a
+      // database trigger on contact_submissions — no client-side invocation.
 
       setSubmitted(true);
     } catch (err) {
