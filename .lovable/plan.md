@@ -1,14 +1,9 @@
-# Guests Ledger — Remove Row Labels
+# Remove Episode Durations
 
-Remove the "Chapter · 0X" label (and its accent rule) from each row in the Guests ledger. Keep everything else as-is.
+Remove the `{e.len}` time labels ("1h 12 min", "47 min") from the Recent list in `src/components/steward/Episodes.tsx`.
 
-## Change
+- Delete the `<span className="label text-cream/50 ml-auto">{e.len}</span>` line.
+- Remove the now-empty flex wrapper (or keep it for the EP number alone).
+- Optionally drop the `len` field from each `recent` entry since it's unused.
 
-In `src/components/steward/Guests.tsx`:
-- Delete the left-column `<div>` containing the `w-6 h-px bg-clay-red` rule and the "Chapter · 0X" span.
-- Rebalance the grid so the title and copy fill the row cleanly:
-  - Title: `md:col-span-5`
-  - Copy: `md:col-span-7`
-- Leave the hover lift, dividers, heading, intro copy, and CTA untouched.
-
-No other files affected.
+No other changes.

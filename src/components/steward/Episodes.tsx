@@ -1,9 +1,10 @@
 import { Reveal } from "./Reveal";
 
 const recent = [
-  { n: "02", title: "Life's Short — Do What You Love", desc: "30 Years in Rodeo with Lane Fugitt.", len: "1h 12 min", url: "https://youtu.be/kM0ES9TBHZw" },
-  { n: "01", title: "Pressure Makes Diamonds", desc: "Cowboy Wisdom with Ryan Burl.", len: "47 min", url: "https://youtu.be/Au-HbSJEPTM" },
+  { n: "02", title: "Life's Short — Do What You Love", desc: "30 Years in Rodeo with Lane Fugitt.", url: "https://youtu.be/kM0ES9TBHZw" },
+  { n: "01", title: "Pressure Makes Diamonds", desc: "Cowboy Wisdom with Ryan Burl.", url: "https://youtu.be/Au-HbSJEPTM" },
 ];
+
 
 const platforms = [
   { name: "YouTube", url: "https://youtube.com/@thestewardpodcast" },
