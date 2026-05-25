@@ -1,41 +1,43 @@
-## Goal
+# Guests Section — Ledger / Field-Notes Redesign
 
-Replace the existing blockquote in the Timeline section with an inspirational line that speaks to the heart of The Steward Podcast — preserving knowledge, wisdom, and the western/agricultural way of life across generations.
+Replace the image-based marquee card layout with a typographic, image-free ledger that matches the existing field-notes aesthetic.
 
-## Current quote
+## Layout
 
-> "Without preserving what matters outside the digital world, we eventually become a product of the system."
+Two-column ledger rows on desktop, stacked on mobile. Hairline dividers between rows. Subtle hover state lifts the accent rule and shifts the title slightly.
 
-Located in `src/components/steward/Timeline.tsx` (lines 55–58).
-
-## Proposed replacement
-
-> "What is preserved with intention becomes the **inheritance of the next generation.**"
-
-This ties directly to the site's themes already present elsewhere:
-- Stewardship section: "care that outlasts the person doing it"
-- Mission line: "carried forward across generations"
-- Field note items: "What gets passed down"
-
-The italic accent fragment ("inheritance of the next generation.") keeps the same visual rhythm as the current quote — a serif italic phrase styled with `text-accent` closing out a display-font sentence.
-
-## Change
-
-Single edit in `src/components/steward/Timeline.tsx`:
-
-```tsx
-<blockquote className="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.05] text-cream">
-  "What is preserved with intention becomes the{" "}
-  <span className="text-accent italic font-body normal-case tracking-normal">
-    inheritance of the next generation.
-  </span>"
-</blockquote>
+```text
+─────────────────────────────────────────────────────────────
+CHAPTER · 01    RANCHERS              Land, livestock, patience,
+                                      pressure, and the daily
+                                      choices nobody sees.
+─────────────────────────────────────────────────────────────
+CHAPTER · 02    FARMERS               The discipline of seasons…
+─────────────────────────────────────────────────────────────
+…
 ```
 
-No styling, layout, or surrounding rules change.
+- Left column (~30%): condensed uppercase chapter index (`CHAPTER · 01`) in clay-red, tracked-out.
+- Middle column (~25%): display-font guest title (Ranchers, Farmers, …) in dark charcoal.
+- Right column (~45%): body copy in muted foreground.
+- Top + bottom hairlines on the whole table; thin divider between each row.
+- On hover: row gets a faint cream background tint, left chapter index nudges right ~4px, a 1px clay-red rule appears under the title.
 
-## Alternatives (let me know if you'd prefer one)
+## Section frame
 
-1. "The story is only finished when **someone is left to carry it.**"
-2. "Wisdom does not survive by accident — it survives because **someone refused to let it go.**"
-3. "Every generation either passes it forward, or **lets it disappear quietly.**"
+- Keep existing `paper-bg section-seam` wrapper, heading, eyebrow, and intro copy untouched.
+- Remove the marquee track, `GuestCard`, and all `guest-*.webp` imports.
+- Keep the closing "Start With an Episode" CTA.
+
+## Files to change
+
+- `src/components/steward/Guests.tsx` — rewrite the list portion as a semantic `<dl>` or `<ul>` ledger; drop all image imports; keep `guests` data array (title + copy only).
+
+## Technical details
+
+- Use existing tokens: `text-clay-red`, `text-cream` (dark text token), `border-border`, `font-condensed`, `font-display`, `font-body`.
+- Grid: `grid grid-cols-1 md:grid-cols-12` per row; `md:col-span-3 / 3 / 6`.
+- Dividers via `border-t border-border/60`; last row also gets `border-b`.
+- Hover handled with Tailwind `group` + `transition` utilities, no JS.
+- Remove now-unused asset imports and (optionally) the `-sm` webp files only if no other component references them — leave assets in place for this plan; do not delete files.
+- No new dependencies; no changes to other sections.
