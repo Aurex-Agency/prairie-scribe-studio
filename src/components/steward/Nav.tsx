@@ -60,7 +60,7 @@ export const Nav = () => {
               <a
                 key={l.href}
                 href={l.href}
-                className="font-condensed uppercase tracking-[0.2em] text-sm text-white hover:text-accent transition-colors"
+                className="font-condensed uppercase tracking-[0.2em] text-sm text-cream/85 hover:text-accent transition-colors"
               >
                 {l.label}
               </a>
