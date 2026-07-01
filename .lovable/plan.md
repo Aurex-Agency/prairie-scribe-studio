@@ -1,45 +1,43 @@
-# Contact Form Email Delivery
+# Resend Jeremy Clark's contact emails
 
-Wire the contact form so submissions are stored, the show owner (`nshaun@thestewardpod.com`) receives a notification, and the submitter receives a branded confirmation email.
+## What happened
 
-## Prerequisites (one-time setup)
+Jeremy Clark submitted the contact form on **2026-06-29 15:06 UTC**. The DB trigger fired and enqueued both emails correctly, but the queue processor got a **403 `domain_not_verified`** from the email API when it tried to send them. Both landed in the DLQ:
 
-1. **Enable Lovable Cloud** — required for database + serverless email sending.
-2. **Set up a sender email domain** — needed so emails come from the show's brand. The user will be prompted to set up a domain (e.g. `notify.thestewardpod.com`).
-3. **Provision email infrastructure** (queue, suppression list, unsubscribe handler, etc.).
-4. **Scaffold transactional email** Edge Functions and templates.
+- `contact-notification` → `nshaun@thestewardpod.com` — **DLQ**
+- `contact-confirmation` → `jeremy@ecpal.biz` — **DLQ**
 
-## Database
+That's why the owner notification never arrived.
 
-- Table `contact_submissions` with: `id`, `created_at`, `name`, `email`, `topic`, `message`.
-- RLS enabled. Public `INSERT` allowed (anonymous form submissions). No public `SELECT`.
+At the time of that submission, `notify.team.thestewardpod.com` was not yet verified with the email provider (verification likely finished after the submit). Earlier May submissions sent successfully, and re-checking now shows the domain is **✅ Verified**, so new submissions will deliver. The two June 29 messages just need to be re-sent — DLQ messages are not automatically retried.
 
-## Email templates (React Email, branded to The Steward)
+## Fix
 
-1. **`contact-form-confirmation`** — sent to the submitter.
-   - Warm "Message received" note, signed from The Steward.
-   - Echoes back their topic so they know which message landed.
-2. **`contact-form-notification`** — sent to `nshaun@thestewardpod.com`.
-   - Subject like "New contact: {topic} — {name}".
-   - Body shows name, email, topic, full message.
+Re-invoke `send-transactional-email` once for each of the two failed messages, using Jeremy's submission data pulled from `contact_submissions`. New idempotency keys (suffixed `-retry1`) so the sender doesn't short-circuit on the previous DLQ message_ids.
 
-Styling pulled from the site's palette (cream/clay-red accents, Lora/display fonts), white email background per email rules.
+1. **Owner notification** → `nshaun@thestewardpod.com`
+   - template: `contact-notification`
+   - templateData: name/email/topic/message from Jeremy's row
+   - idempotencyKey: `contact-notify-2dca4e05-…-retry1`
 
-## Form wiring (`src/components/steward/Contact.tsx`)
+2. **Submitter confirmation** → `jeremy@ecpal.biz`
+   - template: `contact-confirmation`
+   - templateData: name + topic
+   - idempotencyKey: `contact-confirm-2dca4e05-…-retry1`
 
-- On submit:
-  1. Generate a UUID, insert the submission into `contact_submissions`.
-  2. Invoke `send-transactional-email` twice with stable idempotency keys:
-     - submitter confirmation (`contact-confirm-{id}`)
-     - owner notification (`contact-notify-{id}`)
-  3. Show success state on success; show inline error message on failure (don't silently swallow).
-- Disable the submit button while in-flight; basic email validation already handled by `type="email" required`.
+Both calls go through the same authenticated path the DB trigger uses (service-role JWT from `vault.email_queue_service_role_key`), so no code changes are required. I'll invoke them from a one-off SQL block via `net.http_post`, then verify `email_send_log` shows `sent` for both.
 
-## Unsubscribe page
+## No code changes needed
 
-Required by the email system. A simple branded `/unsubscribe` route that validates the token and confirms the opt-out, styled to match the site.
+- Domain is verified now, so future submissions will work with the existing trigger + edge function.
+- Nothing to change in `Contact.tsx`, the DB trigger, or `send-transactional-email`.
 
-## Notes for the user
+## Verification
 
-- The notification recipient is hard-coded to `nshaun@thestewardpod.com` in the Edge Function call.
-- Emails will only start delivering after the sender domain's DNS verification completes; status is visible in Cloud → Emails.
+After re-sending:
+- Query `email_send_log` for the two new `message_id`s and confirm `status = 'sent'`.
+- Confirm with you that `nshaun@thestewardpod.com` received Jeremy's notification.
+
+## Optional follow-up (ask before doing)
+
+If you want protection against this class of failure (domain temporarily unverified, provider 5xx after retries, etc.), I can add a lightweight DLQ monitor — either a scheduled function that auto-retries DLQ items when the domain is verified, or a simple admin view that lists failed sends so you can retry with one click. Not doing this unless you ask.
