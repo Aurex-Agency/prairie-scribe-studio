@@ -8,10 +8,10 @@ export const MobileBar = () => (
       Watch Latest
     </a>
     <a
-      href="#contact"
+      href="#community"
       className="py-4 text-center font-condensed uppercase tracking-[0.2em] text-xs text-cream border-l border-cream/10"
     >
-      Suggest Guest
+      Join the Community
     </a>
   </div>
 );

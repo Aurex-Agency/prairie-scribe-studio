@@ -22,7 +22,7 @@ export const Episodes = () => {
         <div className="max-w-3xl mb-14">
           <Reveal variant="rise" className="flex items-center gap-3 mb-6">
             <span className="w-10 h-px bg-clay-red" />
-            <span className="label text-clay-red">Chapter 04 — Listen in</span>
+            <span className="label text-clay-red">Watch &amp; listen</span>
           </Reveal>
           <Reveal variant="rise" delay={120} as="h2" className="display text-5xl md:text-7xl text-cream leading-[0.95]">
             Latest episodes from <span className="text-clay-red">The Steward.</span>
