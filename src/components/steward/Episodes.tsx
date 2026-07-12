@@ -43,6 +43,31 @@ export const Episodes = () => {
     return () => { active = false; };
   }, []);
 
+  // Mark up the newest episode as a PodcastEpisode for search engines.
+  useEffect(() => {
+    if (!featured?.id || !featured.title) return;
+    const el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "PodcastEpisode",
+      name: featured.title,
+      url: `https://www.youtube.com/watch?v=${featured.id}`,
+      ...(featured.description ? { description: featured.description } : {}),
+      partOfSeries: {
+        "@type": "PodcastSeries",
+        name: "The Steward Podcast",
+        url: "https://thestewardpod.com/",
+      },
+      associatedMedia: {
+        "@type": "MediaObject",
+        contentUrl: `https://www.youtube.com/watch?v=${featured.id}`,
+      },
+    });
+    document.head.appendChild(el);
+    return () => { el.remove(); };
+  }, [featured]);
+
   return (
     <section id="episodes" className="paper-bg section-seam relative py-20 md:py-32 overflow-hidden text-cream">
       <div className="container">
