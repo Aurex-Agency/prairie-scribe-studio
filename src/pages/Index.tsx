@@ -2,7 +2,6 @@ import { Nav } from "@/components/steward/Nav";
 import { Hero } from "@/components/steward/Hero";
 import { Episodes } from "@/components/steward/Episodes";
 import { Story } from "@/components/steward/Story";
-import { Guests } from "@/components/steward/Guests";
 import { Community } from "@/components/steward/Community";
 import { Footer } from "@/components/steward/Footer";
 import { MobileBar } from "@/components/steward/MobileBar";
@@ -14,7 +13,6 @@ const Index = () => {
       <Hero />
       <Episodes />
       <Story />
-      <Guests />
       <Community />
       <Footer />
       <MobileBar />
