@@ -73,8 +73,8 @@ export const Hero = () => {
             style={{ animationDelay: "0.6s" }}
           >
             <a href="#episodes" className="btn-brass">Watch the Latest Episode</a>
-            <a href="#mission" className="btn-ghost-light">
-              Hear Why This Podcast Exists
+            <a href="#community" className="btn-ghost-light">
+              Follow the Show
               <span aria-hidden>→</span>
             </a>
           </div>

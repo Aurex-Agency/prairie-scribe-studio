@@ -4,9 +4,8 @@ const logoDark = "/steward-logo-small.webp";
 
 const links = [
   { href: "#episodes", label: "Episodes" },
-  { href: "#mission", label: "The Mission" },
-  { href: "#guests", label: "Guests" },
-  { href: "#host", label: "Host" },
+  { href: "#story", label: "The Show" },
+  { href: "#community", label: "Join" },
 ];
 
 export const Nav = () => {
