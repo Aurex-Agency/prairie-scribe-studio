@@ -51,8 +51,9 @@ function isoDurationToSeconds(iso: string): number {
 
 function decodeEntities(s: string): string {
   return s
-    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#x27;/g, "'")
+    .replace(/&amp;/g, '&')
 }
 
 async function fromDataApi(): Promise<Payload | null> {
